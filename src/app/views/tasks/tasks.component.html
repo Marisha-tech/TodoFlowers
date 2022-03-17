@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-body px-0 pb-2">
+    <div class="table-responsive">
+      <table class="table align-items-center mb-0">
+        <thead>
+        <tr>
+          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Название</th>
+          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Категория</th>
+          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Приоритет</th>
+          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Статус</th>
+          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>
+            <div class="d-flex px-2 py-1">
+              <div class="d-flex flex-column justify-content-center">
+                <h6 class="mb-0 text-sm">{{task.id}}</h6>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex px-2 py-1">
+              <div class="d-flex flex-column justify-content-center">
+                <h6 class="mb-0 text-sm">{{task.title}}</h6>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{task.category}}
+          </td>
+          <td class="align-middle text-center text-sm">
+            <span class="text-xs font-weight-bold"> {{task.priority}} </span>
+          </td>
+          <td class="align-middle">
+            {{task.completed}}
+          </td>
+          <td class="align-middle">
+            {{task.date | date:'mediumDate'}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
