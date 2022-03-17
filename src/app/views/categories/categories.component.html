@@ -8,7 +8,7 @@
   <hr class="horizontal light mt-0 mb-2">
   <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
     <ul class="navbar-nav">
-      <li class="nav-item" *ngFor="let category of categories">
+      <li class="nav-item" *ngFor="let category of categories" (click)="showTasksByCategory(category)">
         <a class="nav-link text-white">
           <span class="nav-link-text ms-1">{{category.title}}</span>
         </a>
