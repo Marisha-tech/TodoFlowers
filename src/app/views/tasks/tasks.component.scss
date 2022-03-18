@@ -2,3 +2,8 @@
   text-decoration: line-through;
   color: #797979;
 }
+.task{
+  &__not-value{
+    color: #b7b7b7;
+  }
+}

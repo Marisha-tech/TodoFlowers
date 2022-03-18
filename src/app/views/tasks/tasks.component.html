@@ -28,14 +28,19 @@
               </div>
             </div>
           </td>
-          <td>
-            {{task.category != null ? task.category.title : 'Без категории'}}
+          <td
+              [class.task__not-value]="!task.category"
+            >
+              {{task.category != null ? task.category.title : 'Без категории'}}
           </td>
-          <td class="align-middle text-center text-sm">
-            <span
-              class="text-xs font-weight-bold"> {{task.priority != null ? task.priority.title : 'Без приоритета'}} </span>
+          <td class="align-middle text-center"
+              [class.task__not-value]="!task.category"
+            >
+              {{task.priority != null ? task.priority.title : 'Без приоритета'}}
           </td>
-          <td class="align-middle">
+          <td class="align-middle"
+              [class.task__not-value]="!task.date"
+          >
             {{task.date != null ? (task.date | date:'mediumDate') : 'Без даты'}}
           </td>
           <td class="align-middle">
