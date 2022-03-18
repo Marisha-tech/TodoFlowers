@@ -17,7 +17,7 @@
           <td>
             <div class="d-flex px-2 py-1">
               <div class="d-flex flex-column justify-content-center">
-                <h6 class="mb-0 text-sm">{{idx+1}}</h6>
+                <h6 class="mb-0 text-sm">{{idx + 1}}</h6>
               </div>
             </div>
           </td>
@@ -29,18 +29,25 @@
             </div>
           </td>
           <td>
-            {{task.category != null ? task.category.title: 'Без категории'}}
+            {{task.category != null ? task.category.title : 'Без категории'}}
           </td>
           <td class="align-middle text-center text-sm">
-            <span class="text-xs font-weight-bold"> {{task.priority != null ? task.priority.title: 'Без приоритета'}} </span>
+            <span
+              class="text-xs font-weight-bold"> {{task.priority != null ? task.priority.title : 'Без приоритета'}} </span>
           </td>
           <td class="align-middle">
             {{task.date != null ? (task.date | date:'mediumDate') : 'Без даты'}}
           </td>
           <td class="align-middle">
-            {{task?.completed}}
+            <div class="form-check">
+              <label class="form-check-label">
+                <input [checked]="task?.completed" class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
           </td>
-
         </tr>
         </tbody>
       </table>
