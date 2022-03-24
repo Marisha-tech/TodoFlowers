@@ -90,14 +90,33 @@ https://angular.io/guide/structural-directives
 <p>Если не будет скобок [], то в атрибут <b>title</b> происвоится текст <b>titleValue</b></p>
 <p><b>One-way binding</b> - односторонняя связь</p>
 <p><b>[class.completed] = “task.completed”</b> - включение или исключение для тега селектора .completed из CSS</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+## Таблица
+<p>mat-table( mat - от слова material) - Специальный компонент для отображения списка объектов. Встроенные возможности для постраничности, сортировки. Будем отображать список задач (вместо таблицы, которая предоставляется в шаблоне)</p>
+<p>https://material.angular.io/components/table/</p>
+<p>Компонент находится внутри библиотеки Angular Material (ранее подключали через npm) https://material.angular.io/guide/getting-started</p>
+
+## Импорт
+<p>Библиотека @angular/material в файле package.json (обычно добавляется автоматически при установке библиотеки через npm)</p>
+<ul> Модули
+<li>MatTableModule</li>
+<li>MatPaginatorModule</li>
+<li>MatSortModule</li>
+<li>BrowserAnimationsModule</li>
+</ul>
+<ul>Модули должны быть импортированы в 2-х местах в файле app.module.ts (Иначе функционал просто не будет работать, хотя никаких ошибок может не отображаться):
+<li>import в начале файла</li>
+<li>imports в @NgModule</li>
+</ul>
+
+## Тема
+<p>Подключить тему, в которой уже прописаны многие стили компонентов Angular Material</p>
+<p>Выбираем тему deeppurple</p>
+<p>Можно выбирать любую другую: https://material.angular.io/guide/theming</p>
+<p>Прописать импорт в styles.css: <code>@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';</code> </p>
+
+## DataSource
+<p>Mat-table использует datasource -  контейнер с данными и доп. возможностями</p>
 <p></p>
 <p></p>
 <p></p>
