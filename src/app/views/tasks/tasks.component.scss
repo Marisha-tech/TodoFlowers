@@ -1,9 +1,42 @@
 .completed {
   text-decoration: line-through;
-  color: #797979;
+  color: #ccc;
 }
-.task{
-  &__not-value{
+
+.task {
+  &__not-value {
     color: #b7b7b7;
   }
+}
+
+.col {
+  &-color {
+    width: 4%;
+  }
+
+  &-id {
+    width: 2%;
+    text-align: center;
+  }
+
+  &-title {
+  }
+
+  &-date {
+  }
+
+  &-priority {
+  }
+
+  &-category {
+  }
+}
+
+table {
+  width: 100%;
+}
+
+tr.mat-row {
+  height: 48px;
+  border: 1px solid #ccc;
 }

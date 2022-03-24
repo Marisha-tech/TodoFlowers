@@ -1,65 +1,57 @@
 <div class="card">
   <div class="card-body px-0 pb-2">
     <div class="table-responsive">
-      <table class="table align-items-center mb-0">
-        <thead>
-        <tr>
-          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Название</th>
-          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Категория</th>
-          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Приоритет</th>
-          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Дата</th>
-          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Статус</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let task of tasks; let idx = index" [class.completed]="task.completed">
-          <td>
-            <div class="d-flex px-2 py-1">
-              <div class="d-flex flex-column justify-content-center">
-                <h6 class="mb-0 text-sm">{{idx + 1}}</h6>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="d-flex px-2 py-1">
-              <div class="d-flex flex-column justify-content-center">
-                <h6 class="mb-0 text-sm">{{task.title}}</h6>
-              </div>
-            </div>
-          </td>
-          <td
-              [class.task__not-value]="!task.category"
-            >
-              {{task.category != null ? task.category.title : 'Без категории'}}
-          </td>
-          <td class="align-middle text-center"
-              [class.task__not-value]="!task.category"
-            >
-              {{task.priority != null ? task.priority.title : 'Без приоритета'}}
-          </td>
-          <td class="align-middle"
-              [class.task__not-value]="!task.date"
+      <table cdk-table [dataSource]="dataSource">
+
+        <!--  цвет приоритета  -->
+        <ng-container cdkColumnDef="color">
+          <th cdk-header-cell *cdkHeaderCellDef></th>
+          <td class="col-color" cdk-cell *cdkCellDef="let task" [style.background-color]="getPriorityColor(task)"></td>
+        </ng-container>
+
+        <!-- нумерация-->
+        <ng-container cdkColumnDef="id">
+          <th cdk-header-cell *cdkHeaderCellDef></th>
+          <td class="col-id" cdk-cell *cdkCellDef="let index = index">{{index + 1}}</td>
+        </ng-container>
+
+        <!-- название задачи-->
+        <ng-container cdkColumnDef="title">
+          <th cdk-header-cell *cdkHeaderCellDef> Название </th>
+          <td class="col-title" cdk-cell *cdkCellDef="let task"
+              [ngClass]="{'completed': task.completed}"
           >
-            {{task.date != null ? (task.date | date:'mediumDate') : 'Без даты'}}
+
+            {{task.title}}
           </td>
-          <td class="align-middle">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input
-                  [checked]="task?.completed"
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  (click)="toggleClickCompleted(task)">
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-          </td>
-        </tr>
-        </tbody>
+        </ng-container>
+
+        <!--дата выполнения-->
+        <ng-container cdkColumnDef="date">
+          <th cdk-header-cell *cdkHeaderCellDef> Срок </th>
+          <td class="col-date" cdk-cell *cdkCellDef="let task" [ngClass]="{'completed': task.completed, 'nodate': task.date == null}"> {{task.date | date: "medium"}} </td>
+        </ng-container>
+
+        <!--приоритет-->
+        <ng-container cdkColumnDef="priority">
+          <th cdk-header-cell *cdkHeaderCellDef> Приоритет </th>
+          <td class="col-priority" cdk-cell *cdkCellDef="let task"
+              [ngClass]="{'completed': task.completed, 'nopriority': task.priority == null}"
+          > {{task.priority ? task.priority.title : "Без приоритета"}} </td>
+        </ng-container>
+
+        <!--категория-->
+        <ng-container cdkColumnDef="category">
+          <th cdk-header-cell *cdkHeaderCellDef> Категория </th>
+          <td class="col-category" cdk-cell *cdkCellDef="let task"
+              [ngClass]="{'completed': task.completed, 'nocategory': task.category == null, 'link': !task.completed && task.category}"
+          > {{task.category ? task.category.title : "Без категории"}} </td>
+        </ng-container>
+
+<!--        Заголовок таблицы-->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<!--        строки таблицы-->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
   </div>
