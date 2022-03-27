@@ -11,7 +11,7 @@
 
 .col {
   &-color {
-    width: 4%;
+    width: 2%;
   }
 
   &-id {
@@ -20,23 +20,28 @@
   }
 
   &-title {
+    width: 40%;
   }
 
   &-date {
+    width: 10%;
   }
 
   &-priority {
+    width: 5%;
   }
 
   &-category {
+    width: 5%;
   }
 }
 
 table {
-  width: 100%;
+  //width: 100%;
+  //border-collapse: inherit;
 }
 
-tr.mat-row {
+tr {
   height: 48px;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
