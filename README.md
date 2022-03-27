@@ -117,11 +117,13 @@ https://angular.io/guide/structural-directives
 
 ## DataSource
 <p>Mat-table использует datasource -  контейнер с данными и доп. возможностями</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+## Сортировка и пагинация
+<p>Будем использовать: <code>[ngClass] - включение/исключение классов CSS</code><code>*ngIf - условие для отображения тега</code></p>
+<p>mat-table - готовые решения для сортировки и постраничности</p>
+<p>Можно задавать свои правила сортировки (по какому полю объекта выполнять сортировку) с помощью SortingDataAccessor</p>
+<p>Последовательность дейтсвий - применить attribute directives: matSort - для таблицы; mat-header-cell - для каждого столбца, по которому нужно сортировать</p>
+<p>Если использовать <code>@ViewChild</code>, то с данными можно работать только после <code>ngOnInit(){}</code>, например в <code> ngAfterViewInit(){}</code></p>
 <p></p>
 <p></p>
 <p></p>

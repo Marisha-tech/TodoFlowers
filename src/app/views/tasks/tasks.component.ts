@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {DataHandlerService} from "../../services/data-handler.service";
 import {Task} from "../../model/Task";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator, MatPaginatorIntl} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-tasks',
@@ -9,12 +11,15 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./tasks.component.scss']
 })
 
-export class TasksComponent implements OnInit {
+export class TasksComponent implements OnInit, AfterViewInit {
   // поля для таблицы (те, что отображают данные из задачи - должны совпадать с названиеями переменных класса)
   public displayedColumns: string[] = ['color', 'id', 'title', 'date', 'priority', 'category'];
-  // public dataSource?: MatTableDataSource<Task> = new MatTableDataSource<Task>([]); // контейнер - источник данных для таблицы displayedColumns
-  // public dataSource?: MatTableDataSource<Task>; // контейнер - источник данных для таблицы displayedColumns
-  public dataSource: MatTableDataSource<Task> = new MatTableDataSource<Task>()
+  public dataSource: MatTableDataSource<Task> = new MatTableDataSource<Task>()// контейнер - источник данных для таблицы displayedColumns
+
+  //ссылки на компоненты таблицы
+  @ViewChild(MatPaginator) private paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
+  @ViewChild(MatSort) sort: MatSort = new MatSort();
+
   tasks?: Task[]
 
   constructor(private dataHandler: DataHandlerService) {
@@ -26,6 +31,10 @@ export class TasksComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Task>(this.tasks)
 
     this.refreshTable()
+  }
+
+  ngAfterViewInit() {
+    this.addTableObjects()
   }
 
   toggleClickCompleted(task: Task) {
@@ -48,7 +57,43 @@ export class TasksComponent implements OnInit {
 
   //показывает задачи с применением текущих всех условий (категория, поиск, фильтры и пр)
   private refreshTable() {
-    console.log(this.dataSource.data, 'dataSource')
     // this.dataSource.data = this.tasks //обновить источник данных (тк данные массива tasks обновились)
+
+    this.addTableObjects()
+    this.dataSource.sortingDataAccessor = (task, colName: string) => {
+      switch (colName) {
+        case 'priority': {
+          return task.priority ? task.priority?.id : ''
+        }
+        case 'category': {
+          return task.category ? task.category?.title : ''
+        }
+        case 'date': {
+          return task.date ? task.date.getTime(): 0
+        }
+        case 'title': {
+          return task.title
+        }
+        default: {
+          return task.title
+        }
+      }
+     /* if (colName === 'title') {
+        return task.title
+      }
+      else if (colName === 'priority') {
+        return task.priority?.title !== undefined ? task.priority?.title : ""
+      }*/
+      // return task.title
+      // console.log( colName.toString(), 'colName')
+      // console.log( task, 'task')
+      // return task[]
+    }
+  }
+
+
+  private addTableObjects() {
+    this.dataSource.sort = this.sort
+    this.dataSource.paginator = this.paginator
   }
 }

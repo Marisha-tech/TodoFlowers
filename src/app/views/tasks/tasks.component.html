@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body px-0 pb-2">
     <div class="table-responsive">
-      <table cdk-table [dataSource]="dataSource">
+      <table cdk-table [dataSource]="dataSource" matSort>
 
         <!--  цвет приоритета  -->
         <ng-container cdkColumnDef="color">
@@ -17,7 +17,7 @@
 
         <!-- название задачи-->
         <ng-container cdkColumnDef="title">
-          <th cdk-header-cell *cdkHeaderCellDef> Название </th>
+          <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Название</th>
           <td class="col-title" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed}"
           >
@@ -28,13 +28,14 @@
 
         <!--дата выполнения-->
         <ng-container cdkColumnDef="date">
-          <th cdk-header-cell *cdkHeaderCellDef> Срок </th>
-          <td class="col-date" cdk-cell *cdkCellDef="let task" [ngClass]="{'completed': task.completed, 'nodate': task.date == null}"> {{task.date | date: "medium"}} </td>
+          <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Срок</th>
+          <td class="col-date" cdk-cell *cdkCellDef="let task"
+              [ngClass]="{'completed': task.completed, 'nodate': task.date == null}"> {{task.date | date: "medium"}} </td>
         </ng-container>
 
         <!--приоритет-->
         <ng-container cdkColumnDef="priority">
-          <th cdk-header-cell *cdkHeaderCellDef> Приоритет </th>
+          <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Приоритет</th>
           <td class="col-priority" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed, 'nopriority': task.priority == null}"
           > {{task.priority ? task.priority.title : "Без приоритета"}} </td>
@@ -42,17 +43,21 @@
 
         <!--категория-->
         <ng-container cdkColumnDef="category">
-          <th cdk-header-cell *cdkHeaderCellDef> Категория </th>
+          <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Категория</th>
           <td class="col-category" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed, 'nocategory': task.category == null, 'link': !task.completed && task.category}"
           > {{task.category ? task.category.title : "Без категории"}} </td>
         </ng-container>
 
-<!--        Заголовок таблицы-->
+        <!--        Заголовок таблицы-->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-<!--        строки таблицы-->
+        <!--        строки таблицы-->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+      <mat-paginator [pageSizeOptions]="[10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
     </div>
   </div>
 </div>
