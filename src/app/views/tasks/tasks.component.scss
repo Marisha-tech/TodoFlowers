@@ -7,6 +7,11 @@
   &__not-value {
     color: #b7b7b7;
   }
+  &__not-found{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .col {

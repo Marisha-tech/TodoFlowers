@@ -78,16 +78,6 @@ export class TasksComponent implements OnInit, AfterViewInit {
           return task.title
         }
       }
-     /* if (colName === 'title') {
-        return task.title
-      }
-      else if (colName === 'priority') {
-        return task.priority?.title !== undefined ? task.priority?.title : ""
-      }*/
-      // return task.title
-      // console.log( colName.toString(), 'colName')
-      // console.log( task, 'task')
-      // return task[]
     }
   }
 
