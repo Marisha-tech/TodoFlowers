@@ -125,11 +125,25 @@ https://angular.io/guide/structural-directives
 <p>Последовательность дейтсвий - применить attribute directives: matSort - для таблицы; mat-header-cell - для каждого столбца, по которому нужно сортировать</p>
 <p>Если использовать <code>@ViewChild</code>, то с данными можно работать только после <code>ngOnInit(){}</code>, например в <code> ngAfterViewInit(){}</code></p>
 
-## Жизненный цикл компонента
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+## Жизненный цикл компонента - LifeCycle
+<p>https://angular.io/guide/lifecycle-hooks</p>
+<p>LifeCycle - набор методов, которые вызываются на разных этапах работы компонента (от создания до уничтожения)</p>
+<p>Нужно знать, для правильной инициализации переменных (чтобы не было ошибки undefined)</p>
+<p>Без полного знаний как работает Angular - нет смысла запоминать все методы. Только по мере их использования (понимания)</p>
+<code>
+constructor <br>
+ngOnChanges <br>
+ngOnInit <br>
+ngDoCheck <br>
+ngAfterContentInit <br>
+ngAfterContentChecked <br>
+ngAfterViewInit <br>
+ngAfterViewChecked <br>
+ngOnDestroy
+</code>
+<p>
+
+</p>
 <p></p>
 <p></p>
 <p></p>
