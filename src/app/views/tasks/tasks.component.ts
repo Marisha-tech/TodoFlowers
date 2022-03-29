@@ -24,17 +24,19 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   constructor(private dataHandler: DataHandlerService) {
     // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
-    console.log(this.tasks, 'Tasks')
+    // console.log(this.tasks, 'Tasks')
   }
 
   ngOnInit() {
     this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
+
     //dataSource обязательно нужно создавать для таблицы. В него присваивается любой источник (БД, массивы, JSON)
     this.dataSource = new MatTableDataSource<Task>(this.tasks)
 
     this.refreshTable()
   }
 
+  // в этом методе уже все проинициализировано, поэтому можно присваивать объекты. Иначе может быть ошибка undefined
   ngAfterViewInit() {
     this.addTableObjects()
   }
