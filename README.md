@@ -141,15 +141,16 @@ ngAfterViewInit <br>
 ngAfterViewChecked <br>
 ngOnDestroy
 </code>
-<p>
 
-</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+## DAO (Data Access Object) - паттерн (шаблон)
+
+<p>Используется для того, чтобы код был расширяемым, правильно написанным</p>
+<p>DAO - слой между данными и бизнес-процессами</p>
+<p>В интерфейсах - описание. В классах - реализация</p>
+<p>Доступ к данным не напрямую, а через “интерфейс”</p>
+<p>Для чего: формализация, расширяемость, логичность. Часто используется на backend</p>
+<p><code>Business Layer <-> DAO (CRUD: Create, Read, Update, Delete). Сам DAO для доступа к БД можт использовать что угодно (JDBC API, Hibernate API) <-> DB</code></p>
+<p>https://www.netguru.com/codestories/top-5-most-used-patterns-in-oop-with-typescript</p>
 <p></p>
 <p></p>
 <p></p>
