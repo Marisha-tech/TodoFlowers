@@ -25,7 +25,7 @@ export class TestData {
   ]
 
   static tasks: Task[] = [
-    /*{
+    {
       id: 1,
       title: 'Залить бензин полный бак',
       priority: TestData.priorities[2],
@@ -189,6 +189,6 @@ export class TestData {
       category: TestData.categories[4],
       date: new Date('2019-03-17')
 
-    }*/
+    }
   ];
 }
