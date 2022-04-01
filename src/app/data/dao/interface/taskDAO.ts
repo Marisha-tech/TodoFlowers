@@ -1,5 +1,6 @@
 import {CommonDAO} from "./commonDAO";
 import {Category} from "../../../model/Category";
+import {Task} from "../../../model/Task";
 import {Priority} from "../../../model/Priority";
 import {Observable} from "rxjs";
 
