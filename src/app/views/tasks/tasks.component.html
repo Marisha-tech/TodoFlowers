@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-body px-0 pb-2" *ngIf="tasks?.length; else notTask">
+  <div class="card-body px-0 pb-2" *ngIf="tasks && tasks.length > 0; else notTask">
     <div class="table-responsive" >
 
       <table cdk-table [dataSource]="dataSource" matSort>

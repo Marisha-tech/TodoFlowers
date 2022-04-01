@@ -5,6 +5,7 @@ import {TestData} from "../data/TestData";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {TaskDAOArray} from "../data/dao/impl/taskDAOArray";
 import {CategoryDAOArray} from "../data/dao/impl/categoryDAOArray";
+import {Priority} from "../model/Priority";
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +20,18 @@ export class DataHandlerService {
   constructor() {
   }
 
- /* public getCategories() {
-    this.categoriesSubject.next(TestData.categories)
-  }*/
+  /* public getCategories() {
+     this.categoriesSubject.next(TestData.categories)
+   }*/
 
-/*  public fillTasks() {
-    this.tasksSubject.next(TestData.tasks)
-  }*/
+  /*  public fillTasks() {
+      this.tasksSubject.next(TestData.tasks)
+    }*/
 
-/*  public fillTasksByCategory(category: Category) {
-    const tasks = TestData.tasks.filter(task => task.category === category)
-    this.tasksSubject.next(tasks)
-  }*/
+  /*  public fillTasksByCategory(category: Category) {
+      const tasks = TestData.tasks.filter(task => task.category === category)
+      this.tasksSubject.next(tasks)
+    }*/
 
   getAllTasks(): Observable<Task[]> {
     return this.taskDaoArray.getAll()
@@ -38,5 +39,10 @@ export class DataHandlerService {
 
   getAllCategories(): Observable<Category[]> {
     return this.categoryDAOArray.getAll()
-}
+  }
+
+// поиск задач по параметрам
+  searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
+    return this.taskDaoArray.search(category, searchText, status, priority);
+  }
 }

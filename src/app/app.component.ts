@@ -13,11 +13,31 @@ export class AppComponent implements OnInit {
   tasks: Task[]
   categories: Category[]
 
+  public selectedCategory: Category = null;
+
   constructor(private dataHandler: DataHandlerService) {
   }
 
   ngOnInit(): void {
     this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks)
     this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories)
+
+    this.onSelectCategory(null) //показать все задачи
+  }
+
+  // изменение категории
+  public onSelectCategory(category: Category) {
+
+    this.selectedCategory = category;
+
+    this.dataHandler.searchTasks(
+      this.selectedCategory,
+      null,
+      null,
+      null
+    ).subscribe(tasks => {
+      this.tasks = tasks;
+    });
+
   }
 }

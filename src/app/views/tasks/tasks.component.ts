@@ -20,9 +20,14 @@ export class TasksComponent implements OnInit {
   @ViewChild(MatPaginator) private paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
-  //текущие задачи для отображения на странице
-  @Input()
   public tasks?: Task[] // напрямую не присваиваем значения в переменную, только через @Input
+
+  //текущие задачи для отображения на странице
+  @Input('tasks')
+  public set setTasks(tasks: Task[]) {//напрямую не присваиваем значения в переменную, только через @Input
+    this.tasks = tasks
+    this.fillTable()
+  }
 
   constructor(private dataHandler: DataHandlerService) {
     // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
@@ -39,11 +44,11 @@ export class TasksComponent implements OnInit {
   }
 
   // в этом методе уже все проинициализировано, поэтому можно присваивать объекты. Иначе может быть ошибка undefined
-/*
-  ngAfterViewInit() {
-    this.addTableObjects()
-  }
-*/
+  /*
+    ngAfterViewInit() {
+      this.addTableObjects()
+    }
+  */
 
   toggleClickCompleted(task: Task) {
     task.completed = !task.completed
@@ -65,6 +70,10 @@ export class TasksComponent implements OnInit {
 
   //показывает задачи с применением текущих всех условий (категория, поиск, фильтры и пр)
   private fillTable() {
+
+    if (!this.dataSource){
+      return
+    }
     this.dataSource.data = this.tasks //обновить источник данных (тк данные массива tasks обновились)
 
     this.addTableObjects()
