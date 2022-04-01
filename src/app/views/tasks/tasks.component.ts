@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {DataHandlerService} from "../../services/data-handler.service";
 import {Task} from "../../model/Task";
 import {MatTableDataSource} from "@angular/material/table";
@@ -11,7 +11,7 @@ import {MatSort} from "@angular/material/sort";
   styleUrls: ['./tasks.component.scss']
 })
 
-export class TasksComponent implements OnInit, AfterViewInit {
+export class TasksComponent implements OnInit {
   // поля для таблицы (те, что отображают данные из задачи - должны совпадать с названиеями переменных класса)
   public displayedColumns: string[] = ['color', 'id', 'title', 'date', 'priority', 'category'];
   public dataSource: MatTableDataSource<Task> = new MatTableDataSource<Task>()// контейнер - источник данных для таблицы displayedColumns
@@ -20,7 +20,9 @@ export class TasksComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) private paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
-  tasks?: Task[]
+  //текущие задачи для отображения на странице
+  @Input()
+  public tasks?: Task[] // напрямую не присваиваем значения в переменную, только через @Input
 
   constructor(private dataHandler: DataHandlerService) {
     // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
@@ -29,18 +31,19 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
-    this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks)
+    // this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks)
 
     //dataSource обязательно нужно создавать для таблицы. В него присваивается любой источник (БД, массивы, JSON)
     this.dataSource = new MatTableDataSource<Task>(this.tasks)
-
-    this.refreshTable()
+    this.fillTable() //заполняем таблицы данными (задачи) и всеми метаданными
   }
 
   // в этом методе уже все проинициализировано, поэтому можно присваивать объекты. Иначе может быть ошибка undefined
+/*
   ngAfterViewInit() {
     this.addTableObjects()
   }
+*/
 
   toggleClickCompleted(task: Task) {
     task.completed = !task.completed
@@ -61,8 +64,8 @@ export class TasksComponent implements OnInit, AfterViewInit {
   }
 
   //показывает задачи с применением текущих всех условий (категория, поиск, фильтры и пр)
-  private refreshTable() {
-    // this.dataSource.data = this.tasks //обновить источник данных (тк данные массива tasks обновились)
+  private fillTable() {
+    this.dataSource.data = this.tasks //обновить источник данных (тк данные массива tasks обновились)
 
     this.addTableObjects()
     this.dataSource.sortingDataAccessor = (task, colName: string) => {
