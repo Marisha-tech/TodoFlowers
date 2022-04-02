@@ -10,6 +10,7 @@ export class TaskDAOArray implements TaskDAO {
   getAll(): Observable<Task[]> {
     return of(TestData.tasks);
   }
+
   get(id: number): Observable<Task> {
     return undefined;
   }
@@ -39,10 +40,20 @@ export class TaskDAOArray implements TaskDAO {
   }
 
   search(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
-    return undefined;
+    return of(this.searchTodos(category, searchText, status, priority))
   }
 
   update(T): Observable<Task> {
     return undefined;
+  }
+
+  private searchTodos(category: Category, searchText: string, status: boolean, priority: Priority): Task[] {
+    let allTasks = TestData.tasks
+
+    if (category !== null) {
+      allTasks = allTasks.filter(todo => todo.category === category)
+    }
+
+    return allTasks //отфильтрованный массив
   }
 }

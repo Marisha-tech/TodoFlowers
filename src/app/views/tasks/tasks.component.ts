@@ -71,7 +71,7 @@ export class TasksComponent implements OnInit {
   //показывает задачи с применением текущих всех условий (категория, поиск, фильтры и пр)
   private fillTable() {
 
-    if (!this.dataSource){
+    if (!this.dataSource) {
       return
     }
     this.dataSource.data = this.tasks //обновить источник данных (тк данные массива tasks обновились)

@@ -35,7 +35,7 @@ export class CategoriesComponent implements OnInit {
     this.selectedCategory = category //сохраняем выбранную категорию
     console.log(category)
     //вызываем вешний обработчик и передаем туда выбранную категорию
-    // this.selectedCategory.next(this.selectedCategory)
+    this.selectCategory.emit(this.selectedCategory)
 
 
   }
