@@ -15,17 +15,38 @@ export class EditTaskDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: [Task, string], // данные, которые передали в диалоговое окно
     private dataHandler: DataHandlerService, // ссылка на сервис для работы с данными
     private dialog: MatDialog, // для открытия нового диалогового окна (из текущего) - например для подтверждения удаления
-  ) { }
+  ) {
+  }
 
-  private  dialogTitle: string // заголовок окна
+  private dialogTitle: string // заголовок окна
   public task: Task // задача для редактирования/создания
+
+  // сохраняем все назначения в отдельные переменные
+  // чтобы изменения не сказывались на самой задаче и можно было отменить изменения
+  public tmpTitle: string;
 
   ngOnInit(): void {
     this.task = this.data[0] // задача для редактирования/создания
     this.dialogTitle = this.data[1] // текст для диалогового окна
 
-    console.log(this.task)
-    console.log(this.dialogTitle)
+    //инициализаия начальных значений (записываем в отдельные переменные)
+    // чтобы можно было отменить изменения, а то будут сразу записываться в задачу
+    this.tmpTitle = this.task.title
   }
 
+  // нажали ок
+  onConfirm(): void {
+
+    //считываем все значения для сохранения в поля задачи
+    this.task.title = this.tmpTitle
+
+    //  передаем добавленную/измененную задачу в обработчик
+    //  что с ним будут делать - уже задача этого компонента
+    this.dialogRef.close(this.task)
+  }
+
+  //  нажали кнопку отмены (ничего не сохраняем и закрываем окно)
+  onCancel(): void {
+    this.dialogRef.close(null)
+  }
 }

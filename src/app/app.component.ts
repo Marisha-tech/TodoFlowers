@@ -43,8 +43,17 @@ export class AppComponent implements OnInit {
 
   }
 
+  // обновление задачи
   public onUpdateTask(task: Task) {
-    // this.selectedTask = task
-    console.log(task)
+   this.dataHandler.updateTask(task).subscribe(() => {
+     this.dataHandler.searchTasks(
+       this.selectedCategory,
+       null,
+       null,
+       null,
+     ).subscribe(tasks => {
+       this.tasks = tasks
+     })
+   })
   }
 }
