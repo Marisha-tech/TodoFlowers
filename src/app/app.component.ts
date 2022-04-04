@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
 
   public selectedCategory: Category = null;
 
+  // public selectedTask: Task = null
+
   constructor(private dataHandler: DataHandlerService) {
   }
 
@@ -39,5 +41,10 @@ export class AppComponent implements OnInit {
       this.tasks = tasks;
     });
 
+  }
+
+  public onUpdateTask(task: Task) {
+    // this.selectedTask = task
+    console.log(task)
   }
 }

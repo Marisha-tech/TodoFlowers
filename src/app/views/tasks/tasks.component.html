@@ -19,8 +19,9 @@
         <!-- название задачи-->
         <ng-container cdkColumnDef="title">
           <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Название</th>
-          <td class="col-title" cdk-cell *cdkCellDef="let task"
+          <td class="col-title pointer" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed}"
+              (click)="onclickTask(task)"
           >
 
             {{task.title}}

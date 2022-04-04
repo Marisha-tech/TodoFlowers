@@ -206,7 +206,10 @@
     </div>
     <div class="row mb-4">
       <div class="col col-mb-4">
-        <app-tasks [tasks]="tasks"></app-tasks>
+        <app-tasks
+          (updateTask)="onUpdateTask($event)"
+          [tasks]="tasks"
+        ></app-tasks>
       </div>
     </div>
   </div>

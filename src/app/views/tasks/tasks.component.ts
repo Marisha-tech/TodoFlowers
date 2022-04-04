@@ -1,4 +1,13 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {DataHandlerService} from "../../services/data-handler.service";
 import {Task} from "../../model/Task";
 import {MatTableDataSource} from "@angular/material/table";
@@ -28,6 +37,11 @@ export class TasksComponent implements OnInit {
     this.tasks = tasks
     this.fillTable()
   }
+
+  @Output()
+  updateTask = new EventEmitter<Task>()
+
+  // selectedTask: Task
 
   constructor(private dataHandler: DataHandlerService) {
     // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
@@ -102,5 +116,9 @@ export class TasksComponent implements OnInit {
   private addTableObjects() {
     this.dataSource.sort = this.sort
     this.dataSource.paginator = this.paginator
+  }
+
+  onclickTask(task: Task) {
+    this.updateTask.emit(task)
   }
 }
