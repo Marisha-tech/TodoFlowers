@@ -25,7 +25,7 @@ export class CategoriesComponent implements OnInit {
     // this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories)
   }
 
-  showTasksByCategory(category: Category) {
+  showTasksByCategory(category: Category): void {
     // this.selectedCategory = category
     // this.dataHandler.fillTasksByCategory(category)
     //если не изменилось значение, ничего не делать (чтобы лишний раз не делать запрос данных)

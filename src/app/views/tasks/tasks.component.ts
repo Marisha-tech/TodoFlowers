@@ -13,6 +13,8 @@ import {Task} from "../../model/Task";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, MatPaginatorIntl} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {MatDialog} from "@angular/material/dialog";
+import {EditTaskDialogComponent} from "../../dialog/edit-task-dialog/edit-task-dialog.component";
 
 @Component({
   selector: 'app-tasks',
@@ -41,15 +43,14 @@ export class TasksComponent implements OnInit {
   @Output()
   updateTask = new EventEmitter<Task>()
 
-  // selectedTask: Task
-
-  constructor(private dataHandler: DataHandlerService) {
-    // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
-    // console.log(this.tasks, 'Tasks')
+  constructor(
+    private dataHandler: DataHandlerService, // доступ к данным
+    private dialog: MatDialog, // работа с диалоговым окном
+  ) {
   }
 
   ngOnInit() {
-    // this.dataHandler.tasksSubject.subscribe(tasks => this.tasks = tasks)
+
     // this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks)
 
     //dataSource обязательно нужно создавать для таблицы. В него присваивается любой источник (БД, массивы, JSON)
@@ -69,7 +70,7 @@ export class TasksComponent implements OnInit {
   }
 
   //в зависимости от статуса задачи вернуть цвет названия
-  getPriorityColor(task: Task) {
+  getPriorityColor(task: Task): string {
 
     if (task.completed) {
       return '#f8f9fa' //TODO вынести цвета в константы (magic strings, magic numbers)
@@ -83,7 +84,7 @@ export class TasksComponent implements OnInit {
   }
 
   //показывает задачи с применением текущих всех условий (категория, поиск, фильтры и пр)
-  private fillTable() {
+  private fillTable(): void {
 
     if (!this.dataSource) {
       return
@@ -113,12 +114,18 @@ export class TasksComponent implements OnInit {
   }
 
 
-  private addTableObjects() {
+  private addTableObjects(): void {
     this.dataSource.sort = this.sort
     this.dataSource.paginator = this.paginator
   }
 
-  onclickTask(task: Task) {
-    this.updateTask.emit(task)
+  //диалоговое окно редактирования для добавления задачи
+  openEditTaskDialog(task: Task): void {
+
+    const dialogRef = this.dialog.open(EditTaskDialogComponent, {data: [task, 'Редактирование задачи'], autoFocus: false})
+
+    dialogRef.afterClosed().subscribe(result => {
+      //обработка результатов
+    })
   }
 }
