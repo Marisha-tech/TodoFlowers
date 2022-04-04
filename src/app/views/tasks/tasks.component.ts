@@ -122,10 +122,17 @@ export class TasksComponent implements OnInit {
   //диалоговое окно редактирования для добавления задачи
   openEditTaskDialog(task: Task): void {
 
-    const dialogRef = this.dialog.open(EditTaskDialogComponent, {data: [task, 'Редактирование задачи'], autoFocus: false})
+    const dialogRef = this.dialog.open(EditTaskDialogComponent, {
+      data: [task, 'Редактирование задачи'],
+      autoFocus: false
+    })
 
     dialogRef.afterClosed().subscribe(result => {
       //обработка результатов
+      if (result as Task) { // если нажали ок и есть результат
+        this.updateTask.emit(task)
+        return
+      }
     })
   }
 }

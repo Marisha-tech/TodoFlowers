@@ -5,6 +5,7 @@ import {TestData} from "../data/TestData";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {TaskDAOArray} from "../data/dao/impl/taskDAOArray";
 import {CategoryDAOArray} from "../data/dao/impl/categoryDAOArray";
+import {PriorityDAOArray} from "../data/dao/impl/priorityDAOArray";
 import {Priority} from "../model/Priority";
 
 @Injectable({
@@ -12,26 +13,13 @@ import {Priority} from "../model/Priority";
 })
 export class DataHandlerService {
 
-  // tasksSubject = new BehaviorSubject<Task[]>(TestData.tasks)
-  // categoriesSubject = new BehaviorSubject<Category[]>(TestData.categories)
+// реализации с данными с помощью массива (можно подставлять любые реализации, в том числе с БД. Главное - соблюдать интерфейсы)
   private taskDaoArray = new TaskDAOArray()
   private categoryDAOArray = new CategoryDAOArray()
+  private priorityDAOArray = new PriorityDAOArray()
 
   constructor() {
   }
-
-  /* public getCategories() {
-     this.categoriesSubject.next(TestData.categories)
-   }*/
-
-  /*  public fillTasks() {
-      this.tasksSubject.next(TestData.tasks)
-    }*/
-
-  /*  public fillTasksByCategory(category: Category) {
-      const tasks = TestData.tasks.filter(task => task.category === category)
-      this.tasksSubject.next(tasks)
-    }*/
 
   getAllTasks(): Observable<Task[]> {
     return this.taskDaoArray.getAll()
@@ -44,5 +32,9 @@ export class DataHandlerService {
 // поиск задач по параметрам
   searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
     return this.taskDaoArray.search(category, searchText, status, priority);
+  }
+
+  updateTask(task: Task): Observable<Task> {
+    return this.taskDaoArray.update(task)
   }
 }
