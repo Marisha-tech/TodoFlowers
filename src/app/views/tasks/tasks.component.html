@@ -21,7 +21,7 @@
           <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Название</th>
           <td class="col-title pointer" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed}"
-              (click)="onclickTask(task)"
+              (click)="openEditTaskDialog(task)"
           >
 
             {{task.title}}
