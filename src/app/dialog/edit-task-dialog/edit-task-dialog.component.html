@@ -20,6 +20,18 @@
     </button>
   </mat-form-field>
 
+<!--  выпадающий список категорий-->
+  <mat-form-field appearance="fill">
+    <mat-label>Укажите категорию</mat-label>
+    <mat-select [(ngModel)]="tmpCategory">
+      <mat-option [value]="null">Без категории</mat-option>
+      <mat-option
+      *ngFor="let cat of categories"
+      [value]="cat"
+      >{{cat.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </div>
 
 <!--кнопки возможных действий-->

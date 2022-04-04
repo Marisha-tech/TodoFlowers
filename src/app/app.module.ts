@@ -18,6 +18,8 @@ import {AppComponent} from './app.component';
 import {CategoriesComponent} from './views/categories/categories.component';
 import {TasksComponent} from './views/tasks/tasks.component';
 import {EditTaskDialogComponent} from './dialog/edit-task-dialog/edit-task-dialog.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import {EditTaskDialogComponent} from './dialog/edit-task-dialog/edit-task-dialo
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatOptionModule, // контейнер для элементов выпадающего списка
+    MatSelectModule, // элемент выпадающего списка
   ],
   providers: [],
   entryComponents: [EditTaskDialogComponent],
