@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {DataHandlerService} from "../../services/data-handler.service";
 import {Task} from "../../model/Task";
 import {Category} from "../../model/Category";
+import {Priority} from "../../model/Priority";
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -20,6 +21,7 @@ export class EditTaskDialogComponent implements OnInit {
   }
 
   public categories: Category[]
+  public priorities: Priority[]
 
   private dialogTitle: string // заголовок окна
   public task: Task // задача для редактирования/создания
@@ -28,6 +30,8 @@ export class EditTaskDialogComponent implements OnInit {
   // чтобы изменения не сказывались на самой задаче и можно было отменить изменения
   public tmpTitle: string;
   public tmpCategory: Category
+  public tmpPriority: Priority;
+
 
   ngOnInit(): void {
     this.task = this.data[0] // задача для редактирования/создания
@@ -37,8 +41,10 @@ export class EditTaskDialogComponent implements OnInit {
     // чтобы можно было отменить изменения, а то будут сразу записываться в задачу
     this.tmpTitle = this.task.title
     this.tmpCategory = this.task.category
+    this.tmpPriority = this.task.priority
 
     this.dataHandler.getAllCategories().subscribe(items => this.categories = items)
+    this.dataHandler.getAllPriorities().subscribe(items => this.priorities = items)
   }
 
   // нажали ок
@@ -47,6 +53,7 @@ export class EditTaskDialogComponent implements OnInit {
     //считываем все значения для сохранения в поля задачи
     this.task.title = this.tmpTitle
     this.task.category = this.tmpCategory
+    this.task.priority = this.tmpPriority
 
     //  передаем добавленную/измененную задачу в обработчик
     //  что с ним будут делать - уже задача этого компонента

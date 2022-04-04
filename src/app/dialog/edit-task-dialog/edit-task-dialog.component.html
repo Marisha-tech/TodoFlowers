@@ -20,15 +20,27 @@
     </button>
   </mat-form-field>
 
-<!--  выпадающий список категорий-->
+  <!--  выпадающий список категорий-->
   <mat-form-field appearance="fill">
     <mat-label>Укажите категорию</mat-label>
     <mat-select [(ngModel)]="tmpCategory">
       <mat-option [value]="null">Без категории</mat-option>
       <mat-option
-      *ngFor="let cat of categories"
-      [value]="cat"
+        *ngFor="let cat of categories"
+        [value]="cat"
       >{{cat.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!--  выпадающий список приоритетов-->
+  <mat-form-field appearance="fill">
+    <mat-label>Укажите приоритет</mat-label>
+    <mat-select [(ngModel)]="tmpPriority">
+      <mat-option [value]="null">Без приоритета</mat-option>
+      <mat-option
+        *ngFor="let priority of priorities"
+        [value]="priority"
+      >{{priority.title}}</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -40,6 +52,7 @@
     mat-button
     (click)="onConfirm()"
     [disabled]="inputTitle.value.trim().length == 0"> <!--если пустой текст - кнопка "Сохранить"-->
-    Сохранить</button>
+    Сохранить
+  </button>
   <button mat-button (click)="onCancel()">Отмена</button>
 </div>
