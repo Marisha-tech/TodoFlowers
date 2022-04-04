@@ -29,6 +29,10 @@ export class DataHandlerService {
     return this.categoryDAOArray.getAll()
   }
 
+  getAllPriorities(): Observable<Priority[]> {
+    return this.priorityDAOArray.getAll()
+  }
+
 // поиск задач по параметрам
   searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
     return this.taskDaoArray.search(category, searchText, status, priority);
