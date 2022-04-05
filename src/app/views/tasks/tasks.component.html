@@ -49,7 +49,8 @@
         <ng-container cdkColumnDef="category">
           <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Категория</th>
           <td class="col-category" cdk-cell *cdkCellDef="let task"
-              [ngClass]="{'completed': task.completed, 'task__not-value': task.category == null, 'link': !task.completed && task.category}"
+              [ngClass]="{'completed': task.completed, 'task__not-value': task.category == null, 'task-link': !task.completed && task.category}"
+              (click)="!task.completed && task.category && onSelectCategory(task.category)"
           > {{task.category ? task.category.title : "Без категории"}} </td>
         </ng-container>
 
