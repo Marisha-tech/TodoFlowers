@@ -208,6 +208,7 @@
       <div class="col col-mb-4">
         <app-tasks
           (updateTask)="onUpdateTask($event)"
+          (deleteTask)="onDeleteTask($event)"
           [tasks]="tasks"
         ></app-tasks>
       </div>

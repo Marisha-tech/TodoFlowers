@@ -41,6 +41,9 @@ export class TasksComponent implements OnInit {
   }
 
   @Output()
+  deleteTask = new EventEmitter<Task>()
+
+  @Output()
   updateTask = new EventEmitter<Task>()
 
   constructor(
@@ -129,6 +132,12 @@ export class TasksComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       //обработка результатов
+
+      if (result === 'delete') {
+        this.deleteTask.emit(task)
+        return;
+      }
+
       if (result as Task) { // если нажали ок и есть результат
         this.updateTask.emit(task)
         return

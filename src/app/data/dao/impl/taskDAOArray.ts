@@ -20,7 +20,10 @@ export class TaskDAOArray implements TaskDAO {
   }
 
   delete(id: number): Observable<Task> {
-    return undefined;
+    const taskTmp = TestData.tasks.find(t => t.id) // удаляем по id
+    TestData.tasks.splice(TestData.tasks.indexOf(taskTmp), 1)
+
+    return of(taskTmp)
   }
 
   getCompletedCountInCategory(category: Category): Observable<number> {
@@ -44,7 +47,7 @@ export class TaskDAOArray implements TaskDAO {
   }
 
   update(task: Task): Observable<Task> {
-    const taskTmp = TestData.tasks.find(t=> t.id === task.id) //обновляем по id
+    const taskTmp = TestData.tasks.find(t => t.id === task.id) //обновляем по id
     TestData.tasks.splice(TestData.tasks.indexOf(taskTmp), 1, task)
     return of(task)
   }
