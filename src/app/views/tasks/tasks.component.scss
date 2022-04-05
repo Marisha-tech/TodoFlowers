@@ -7,7 +7,8 @@
   &__not-value {
     color: #b7b7b7;
   }
-  &__not-found{
+
+  &__not-found {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,6 +40,10 @@
   &-category {
     width: 5%;
   }
+
+  &-operations {
+    width: 5%;
+  }
 }
 
 table {
@@ -49,4 +54,14 @@ table {
 tr {
   height: 48px;
   border-bottom: 1px solid #ccc;
+}
+
+.icon {
+  &-delete {
+    color: #f1828d;
+  }
+
+  &-edit {
+
+  }
 }
