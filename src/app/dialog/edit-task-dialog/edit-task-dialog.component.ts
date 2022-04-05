@@ -32,6 +32,8 @@ export class EditTaskDialogComponent implements OnInit {
   public tmpTitle: string;
   public tmpCategory: Category
   public tmpPriority: Priority;
+  public tmpDate: Date;
+
 
 
   ngOnInit(): void {
@@ -43,6 +45,9 @@ export class EditTaskDialogComponent implements OnInit {
     this.tmpTitle = this.task.title
     this.tmpCategory = this.task.category
     this.tmpPriority = this.task.priority
+    this.tmpDate = this.task.date
+
+    console.log(this.tmpDate)
 
     this.dataHandler.getAllCategories().subscribe(items => this.categories = items)
     this.dataHandler.getAllPriorities().subscribe(items => this.priorities = items)
@@ -55,6 +60,7 @@ export class EditTaskDialogComponent implements OnInit {
     this.task.title = this.tmpTitle
     this.task.category = this.tmpCategory
     this.task.priority = this.tmpPriority
+    this.task.date = this.tmpDate
 
     //  передаем добавленную/измененную задачу в обработчик
     //  что с ним будут делать - уже задача этого компонента

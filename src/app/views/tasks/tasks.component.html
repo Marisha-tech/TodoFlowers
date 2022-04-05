@@ -33,7 +33,7 @@
           <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Срок</th>
           <td class="col-date" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed, 'task__not-value': task.date == null}">
-            {{task.date ? (task.date | date: "medium") : 'Время не задано'}}
+            {{task.date | taskDate}}
           </td>
         </ng-container>
 

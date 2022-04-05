@@ -44,6 +44,29 @@
     </mat-select>
   </mat-form-field>
 
+  <!--календарь - срок выполнения-->
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      placeholder="Укажите срок выполнения" #inputDate
+      readonly="true"
+      [matDatepicker]="picker"
+      [(ngModel)]="tmpDate"
+      (click)="picker.open()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <!--иконка календаря (для открытия календаря)-->
+    <mat-datepicker #picker></mat-datepicker> <!--компонент календаря (открывается оп нажатию)-->
+  </mat-form-field>
+
+  <!--кнопка очистки календаря-->
+  <button
+    *ngIf="inputDate.value.trim().length > 0"
+    (click)="tmpDate = null"
+    mat-button matSuffix mat-icon-button aria-label="Clear"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+
 </div>
 
 <!--кнопки возможных действий-->
@@ -63,10 +86,12 @@
   <div class="col-md-7 col-12 mb-3">
     <button mat-button mat-raised-button color="accent"
             *ngIf="!task.completed"
-            (click)="complete()">Завершить задачу</button>
+            (click)="complete()">Завершить задачу
+    </button>
     <button mat-button mat-raised-button color="accent"
             *ngIf="task.completed"
-            (click)="activate()">Активировать задачу</button>
+            (click)="activate()">Активировать задачу
+    </button>
     <button mat-button mat-raised-button color="warn" (click)="delete()">Удалить</button>
   </div>
 </div>
