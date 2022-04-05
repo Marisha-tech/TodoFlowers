@@ -20,6 +20,7 @@ import {TasksComponent} from './views/tasks/tasks.component';
 import {EditTaskDialogComponent} from './dialog/edit-task-dialog/edit-task-dialog.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatSelectModule} from "@angular/material/select";
     AppComponent,
     CategoriesComponent,
     TasksComponent,
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatSelectModule, // элемент выпадающего списка
   ],
   providers: [],
-  entryComponents: [EditTaskDialogComponent],
+  entryComponents: [EditTaskDialogComponent, ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
