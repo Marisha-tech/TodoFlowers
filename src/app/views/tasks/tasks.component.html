@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body px-0 pb-2" *ngIf="tasks && tasks.length > 0; else notTask">
-    <div class="table-responsive" >
+    <div class="table-responsive">
 
       <table cdk-table [dataSource]="dataSource" matSort>
 
@@ -51,6 +51,36 @@
           <td class="col-category" cdk-cell *cdkCellDef="let task"
               [ngClass]="{'completed': task.completed, 'task__not-value': task.category == null, 'link': !task.completed && task.category}"
           > {{task.category ? task.category.title : "Без категории"}} </td>
+        </ng-container>
+
+        <!--доступные действия над задачами-->
+        <ng-container cdkColumnDef="operations">
+          <th cdk-header-cell *cdkHeaderCellDef mat-sort-header></th>
+          <td class="col-operations" cdk-cell *cdkCellDef="let task"
+              [class.completed]="task.completed">
+
+            <button mat-icon-button (click)="openDeleteDialog(task)" class="icon-delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="openEditTaskDialog(task)" class="icon-edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!--галочка для выполнения задачи-->
+        <ng-container cdkColumnDef="select">
+          <th cdk-header-cell *cdkHeaderCellDef></th>
+          <td class="col-operations" cdk-cell *cdkCellDef="let task">
+            <mat-checkbox class="example-margin"
+                          (click)="$event.stopPropagation()"
+                          (change)="$event ? onToggleStatus(task): null"
+                          [checked]="task.completed"
+            >
+            </mat-checkbox>
+          </td>
+
         </ng-container>
 
         <!--        Заголовок таблицы-->

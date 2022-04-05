@@ -285,8 +285,12 @@ https://v12.material.angular.io/components/datepicker/overview
 ## Pipes
 https://angular.io/guide/pipes
 <p>Pipe - Готовый набор различных “пайпов”. Можно создавать свои “форматтеры”</p>
-<p></p>
-<p></p>
+
+## mat-checkbox
+https://material.angular.io/components/checkbox/overview
+MatCheckboxModule - добавить в add.module.ts
+<p>Если на строке “висят” также и другие действия(редактирование задачи и пр.) - желательно сначала выполнять метод $event.stopPropagation()</p>
+<p>$event.stopPropagation() - чтобы дальше не выполнялись никакие действия</p>
 <p></p>
 <p></p>
 <p></p>
