@@ -275,9 +275,16 @@ Two-way binding:
 </ul>
 <p>Директива [(ngModel)] - Используется в тегах, где можно изменить/выбрать данные (текстовое поле, списки и пр.). Считывает значение в элемент и при изменении - записывает в переменную
 </p>
-<p></p>
-<p></p>
-<p></p>
+
+## Выбор даты - компонент MatDatepicker
+
+https://v12.material.angular.io/components/datepicker/overview
+<p>MatDatepicker - готовый выпадающий календарь. Связываем с текстовым полем input</p>
+<p>В app.module.ts импортировать: MatNativeDateModule и MatDatepickerModule</p>
+
+## Pipes
+https://angular.io/guide/pipes
+<p>Pipe - Готовый набор различных “пайпов”. Можно создавать свои “форматтеры”</p>
 <p></p>
 <p></p>
 <p></p>
