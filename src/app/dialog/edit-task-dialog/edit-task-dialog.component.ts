@@ -83,4 +83,16 @@ export class EditTaskDialogComponent implements OnInit {
       }
     })
   }
+
+  // активировать задачу
+  activate() {
+    // this.task.completed = false
+    this.dialogRef.close('activate')
+  }
+
+  // завершить задачу
+  complete() {
+    // this.task.completed = true
+    this.dialogRef.close('complete')
+  }
 }

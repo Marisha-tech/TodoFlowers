@@ -1,13 +1,13 @@
 <!--диалоговое окно подтверждения действия-->
-<h1 mat-dialog-title>
+<p mat-dialog-title>
   {{dialogTitle}}
-</h1>
+</p>
 <div mat-dialog-content>
   <p>{{message}}</p>
 </div>
 
 <!--кнопки возможных действий-->
 <div mat-dialog-actions>
-  <button mat-button color="primary" (click)="onConfirm()" cdkFocusInitial>Ok</button>
-  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button mat-raised-button color="primary" (click)="onConfirm()" cdkFocusInitial>Ok</button>
+  <button mat-button mat-raised-button (click)="onCancel()">Отмена</button>
 </div>
