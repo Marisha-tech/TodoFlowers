@@ -3,6 +3,7 @@
   id="sidenav-main">
   <app-categories
     (selectCategory)="onSelectCategory($event)"
+    [selectedCategory]="selectedCategory"
     [categories]="categories"
   >
 
@@ -209,6 +210,7 @@
         <app-tasks
           (updateTask)="onUpdateTask($event)"
           (deleteTask)="onDeleteTask($event)"
+          (selectCategory)="onSelectCategory($event)"
           [tasks]="tasks"
         ></app-tasks>
       </div>
