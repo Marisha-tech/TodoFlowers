@@ -45,16 +45,16 @@ export class AppComponent implements OnInit {
 
   // обновление задачи
   public onUpdateTask(task: Task) {
-   this.dataHandler.updateTask(task).subscribe(() => {
-     this.dataHandler.searchTasks(
-       this.selectedCategory,
-       null,
-       null,
-       null,
-     ).subscribe(tasks => {
-       this.tasks = tasks
-     })
-   })
+    this.dataHandler.updateTask(task).subscribe(() => {
+      this.dataHandler.searchTasks(
+        this.selectedCategory,
+        null,
+        null,
+        null,
+      ).subscribe(tasks => {
+        this.tasks = tasks
+      })
+    })
   }
 
   // удаление задачи
@@ -68,6 +68,19 @@ export class AppComponent implements OnInit {
       ).subscribe(tasks => {
         this.tasks = tasks
       })
+    })
+  }
+
+  onDeleteCategory(category: Category) {
+    this.dataHandler.deleteCategory(category.id).subscribe(cat => {
+      this.selectedCategory = null // открываем категорию "все"
+      this.onSelectCategory(this.selectedCategory)
+    })
+  }
+
+  onUpdateCategory(category: Category) {
+    this.dataHandler.updateCategory(category).subscribe(() => {
+      this.onSelectCategory(this.selectedCategory)
     })
   }
 }

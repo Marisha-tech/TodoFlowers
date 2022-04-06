@@ -3,6 +3,10 @@
   id="sidenav-main">
   <app-categories
     (selectCategory)="onSelectCategory($event)"
+
+    (deleteCategory)="onDeleteCategory($event)"
+    (updateCategory)="onUpdateCategory($event)"
+
     [selectedCategory]="selectedCategory"
     [categories]="categories"
   >
