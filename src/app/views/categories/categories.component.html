@@ -9,6 +9,17 @@
 <hr class="horizontal light mt-0 mb-2">
 <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
   <ul class="navbar-nav">
+    <!--виртуальная категория-->
+    <li class="nav-item"
+        (click)="showTasksByCategory(null)">
+      <a class="nav-link text-white pointer"
+         [class.bg-gradient-primary]="selectedCategory===null">
+        <span class="nav-link-text ms-1">Все</span>
+      </a>
+    </li>
+    <!--разделитель-->
+    <hr class="horizontal light">
+
     <li class="nav-item" *ngFor="let category of categories" (click)="showTasksByCategory(category)">
       <a
         class="nav-link text-white pointer"
