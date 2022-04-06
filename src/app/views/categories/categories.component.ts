@@ -17,6 +17,7 @@ export class CategoriesComponent implements OnInit {
 
   @Input()
   selectedCategory: Category
+  indexMouseMove: any;
 
   constructor(private dataHandler: DataHandlerService) {
   }
@@ -39,5 +40,14 @@ export class CategoriesComponent implements OnInit {
     this.selectCategory.emit(this.selectedCategory)
 
 
+  }
+
+  //сохраняет индекс записи категории, над которой в данный момент проходит мышка (а там отображается иконка редактирования)
+  showEditIcon(index: number) {
+    this.indexMouseMove = index
+  }
+
+  openEditDialog(category: Category): void {
+    console.log(category.title)
   }
 }

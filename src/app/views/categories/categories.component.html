@@ -20,12 +20,30 @@
     <!--разделитель-->
     <hr class="horizontal light">
 
-    <li class="nav-item" *ngFor="let category of categories" (click)="showTasksByCategory(category)">
+    <!--категории-->
+    <li
+      class="nav-item"
+      *ngFor="let category of categories; let index=index"
+      (click)="showTasksByCategory(category)"
+      (mouseleave)="showEditIcon(null)"
+      (mouseenter)="showEditIcon(index)"
+    >
       <a
         class="nav-link text-white pointer"
-        [class.bg-gradient-primary]="category===selectedCategory"
-      >
-        <span class="nav-link-text ms-1">{{category.title}}</span>
+        [class.bg-gradient-primary]="category===selectedCategory">
+
+        <!--название категории-->
+        <span class="category__title nav-link-text ms-1">{{category.title}}</span>
+
+        <!--кнопка редактирования категории-->
+        <span class="category__icon">
+           <button mat-icon-button class="icon-edit">
+              <mat-icon
+                *ngIf="indexMouseMove===index"
+                (click)="$event.stopPropagation(); openEditDialog(category)"
+              >edit</mat-icon>
+            </button>
+        </span>
       </a>
     </li>
   </ul>
