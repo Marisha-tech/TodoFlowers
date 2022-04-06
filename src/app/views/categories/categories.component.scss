@@ -1,3 +1,15 @@
-.pointer{
+.category {
+  display: flex;
+
+  &__title {
+    width: 80%;
+  }
+
+  &__icon {
+    width: 20%;
+  }
+}
+
+.pointer {
   cursor: pointer;
 }
