@@ -289,6 +289,7 @@ Dumb компонент - получает данные и отображает 
 
 <h2>Структура</h2>
 Сервисы - AppComponent (вся бизнес-логика) - TodosComponent (отображение) @Input @Output и CategoriesComponent (отображение)  @Input @Output - Другие Dump компоненты
+  ![Smart and Dumb components](https://user-images.githubusercontent.com/51979512/162115946-cae7c96b-5215-437c-bcf4-4b51f9cf1e2d.png)
 AppComponent - smart, container:
 <ul>
 <li>Собирает всю страницу из других компонентов</li>
