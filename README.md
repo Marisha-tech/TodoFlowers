@@ -186,7 +186,6 @@ ngOnDestroy
 <p>Компонент может иметь ряд @Input переменных, нужные для отображения данных</p>
 <p>Компонент сам напрямую не запрашивает данные, ему их передает сервис (по необходимости)</p>
 <img src="https://github.com/Marisha-tech/TodoFlowers/blob/master/src/assets/img/ac1b7e67c9.png" alt="">
-<p>![ac1b7e67c9](https://user-images.githubusercontent.com/51979512/161208176-e6985301-071f-45d2-8ef4-bb15139eccc8.png)</p>
 
 <h4>Parent и Child компоненты</h4>
 <p>Parent - родитель - в нашем случае AppComponent</p>
@@ -288,8 +287,8 @@ Dumb компонент - получает данные и отображает 
 </ul>
 
 <h2>Структура</h2>
-Сервисы - AppComponent (вся бизнес-логика) - TodosComponent (отображение) @Input @Output и CategoriesComponent (отображение)  @Input @Output - Другие Dump компоненты
-<img src="https://github.com/Marisha-tech/TodoFlowers/blob/master/src/assets/img/Smart and Dumb components.png" alt="">
+<p>Сервисы - AppComponent (вся бизнес-логика) - TodosComponent (отображение) @Input @Output и CategoriesComponent (отображение)  @Input @Output - Другие Dump компоненты</p>
+<img src="https://github.com/Marisha-tech/TodoFlowers/blob/master/src/assets/img/Smart-and-Dumb-components.png">
 AppComponent - smart, container:
 <ul>
 <li>Собирает всю страницу из других компонентов</li>
@@ -310,6 +309,8 @@ TodosComponent, CategoriesComponent - dumb, presentational, pure
 <p>**Dumb** - все компоненты для отображения</p>
 <p>Можно изменять внутреннюю реализацию, но это не отразится на работу приложения (т.к. API из набора @Input и @Output не меняется)</p>
 <p>Легче тестировать</p>
+<p></p>
+<p></p>
 <p></p>
 <p></p>
 <p></p>
