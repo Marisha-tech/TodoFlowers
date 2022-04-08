@@ -17,7 +17,7 @@ body {
 }
 
 .mat-dialog-content {
-  padding: 40px !important;
+  //padding: 40px !important;
 }
 
 .mat-form-field {
@@ -32,3 +32,9 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+.navbar-vertical.navbar-expand-xs{
+  position: relative;
+}
+
+

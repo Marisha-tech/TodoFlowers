@@ -51,7 +51,16 @@ export class TasksComponent implements OnInit {
   @Output()
   selectCategory = new EventEmitter<Category>() //нажали на категорию из списка задач
 
+  @Output()
+  filterByTitle = new EventEmitter<string>();
+
+  @Output()
+  filterByStatus = new EventEmitter<boolean>();
+
   selectedCategory: Category
+  public selectedStatusFilter: boolean = null;   // по-умолчанию будут показываться задачи по всем статусам (решенные и нерешенные)
+
+  searchTaskText: string;
 
   constructor(
     private dataHandler: DataHandlerService, // доступ к данным
@@ -127,6 +136,7 @@ export class TasksComponent implements OnInit {
   private addTableObjects(): void {
     this.dataSource.sort = this.sort
     this.dataSource.paginator = this.paginator
+    console.log(this.dataSource)
   }
 
   //диалоговое окно редактирования для добавления задачи
@@ -185,5 +195,20 @@ export class TasksComponent implements OnInit {
 
   onSelectCategory(category: Category): void {
     this.selectCategory.emit(category)
+  }
+
+  //фильтрация по названию
+
+  onFilterByTitle() {
+    this.filterByTitle.emit(this.searchTaskText)
+  }
+
+  // фильтрация по статусу
+  onFilterByStatus(value: boolean) {
+    // на всякий случай проверяем изменилось ли значение (хотя сам UI компонент должен это делать)
+    if (value !== this.selectedStatusFilter) {
+      this.selectedStatusFilter = value;
+      this.filterByStatus.emit(this.selectedStatusFilter);
+    }
   }
 }

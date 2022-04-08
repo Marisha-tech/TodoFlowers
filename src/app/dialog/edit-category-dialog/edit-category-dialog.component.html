@@ -23,8 +23,9 @@
 
 <!--кнопки возможных действий-->
 <div mat-dialog-actions>
-  <div class="col-md-5 col-12 mb-3">
+  <div class="col-md-12 col-12 mb-3">
     <button
+      class="mb-2"
       mat-button
       mat-raised-button
       color="primary"
@@ -35,6 +36,7 @@
     </button>
     <button mat-button mat-raised-button (click)="onCancel()">Отмена</button>
     <button mat-button mat-raised-button color="warn"
+            class="not-margin"
             *ngIf="canDelete"
             (click)="delete()">Удалить
     </button>
