@@ -110,6 +110,7 @@ export class AppComponent implements OnInit {
       null
     ).subscribe((tasks: Task[]) => {
       this.tasks = tasks
+      // console.log(tasks)
     })
   }
 }

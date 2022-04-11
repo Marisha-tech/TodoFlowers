@@ -24,6 +24,19 @@ body {
   width: 100%;
 }
 
+.mat-form-field-label-wrapper {
+  border-bottom: 1px solid #ccc;
+}
+
+.row {
+  margin: 0;
+}
+
+.mat-select-value-text {
+  color: #7b809a;
+}
+
+
 .red {
   color: red;
 }
@@ -33,7 +46,7 @@ body {
   border-radius: 5px;
 }
 
-.navbar-vertical.navbar-expand-xs{
+.navbar-vertical.navbar-expand-xs {
   position: relative;
 }
 
