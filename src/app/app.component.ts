@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataHandlerService} from "./services/data-handler.service";
 import {Task} from './model/Task';
 import {Category} from "./model/Category";
+import {Priority} from "./model/Priority";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'TodoFlowers';
   tasks: Task[]
   categories: Category[]
+  priorities: Priority[]
 
   public selectedCategory: Category = null;
 
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
 
   // фильтрация
   public statusFilter: boolean
+  public priorityFilter: Priority
 
   // public selectedTask: Task = null
 
@@ -29,6 +32,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.dataHandler.getAllTasks().subscribe(tasks => this.tasks = tasks)
     this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories)
+    this.dataHandler.getAllPriorities().subscribe(priorities => this.priorities = priorities)
 
     this.onSelectCategory(null) //показать все задачи
   }
@@ -102,15 +106,22 @@ export class AppComponent implements OnInit {
     this.updateTasks()
   }
 
+  // фильтрация задач по приоритету
+  onFilterTasksByPriority(priority: Priority) {
+    this.priorityFilter = priority
+    this.updateTasks()
+  }
+
   private updateTasks() {
     this.dataHandler.searchTasks(
       this.selectedCategory,
       this.searchTaskText,
       this.statusFilter,
-      null
+      this.priorityFilter
     ).subscribe((tasks: Task[]) => {
       this.tasks = tasks
-      // console.log(tasks)
     })
   }
+
+
 }

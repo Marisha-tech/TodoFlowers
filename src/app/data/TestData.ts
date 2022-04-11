@@ -21,7 +21,7 @@ export class TestData {
     {id: 1, title: 'Низкий', color: '#e5e5e5'},
     {id: 2, title: 'Средний', color: '#85d1b2'},
     {id: 3, title: 'Высокий', color: '#f1828d'},
-    {id: 4, title: 'Сточный', color: '#f1128d'},
+    {id: 4, title: 'Срочный', color: '#f1128d'},
   ]
 
   static tasks: Task[] = [
