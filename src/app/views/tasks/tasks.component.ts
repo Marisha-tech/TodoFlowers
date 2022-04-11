@@ -17,6 +17,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {EditTaskDialogComponent} from "../../dialog/edit-task-dialog/edit-task-dialog.component";
 import {ConfirmDialogComponent} from "../../dialog/confirm-dialog/confirm-dialog.component";
 import {Category} from "../../model/Category";
+import {Priority} from "../../model/Priority";
 
 @Component({
   selector: 'app-tasks',
@@ -25,7 +26,7 @@ import {Category} from "../../model/Category";
 })
 
 export class TasksComponent implements OnInit {
-  // поля для таблицы (те, что отображают данные из задачи - должны совпадать с названиеями переменных класса)
+  // поля для таблицы (те, что отображают данные из задачи - должны совпадать с названиями переменных класса)
   public displayedColumns: string[] = ['color', 'id', 'title', 'date', 'priority', 'category', 'operations', 'select'];
   public dataSource: MatTableDataSource<Task> = new MatTableDataSource<Task>()// контейнер - источник данных для таблицы displayedColumns
 
@@ -34,12 +35,18 @@ export class TasksComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
   public tasks?: Task[] // напрямую не присваиваем значения в переменную, только через @Input
+  public priorities: Priority[] // список приоритетов для фильтрации задач
 
   //текущие задачи для отображения на странице
   @Input('tasks')
   public set setTasks(tasks: Task[]) {//напрямую не присваиваем значения в переменную, только через @Input
     this.tasks = tasks
     this.fillTable()
+  }
+
+  @Input('priorities')
+  set setPriorities(priorities: Priority[]) {
+    this.priorities = priorities
   }
 
   @Output()
@@ -57,11 +64,15 @@ export class TasksComponent implements OnInit {
   @Output()
   filterByStatus = new EventEmitter<boolean>();
 
+  @Output()
+  filterByPriority = new EventEmitter<Priority>()
+
   selectedCategory: Category
 
   //поиск
   public searchTaskText: string; // текущее значение для поиска задач
   public selectedStatusFilter: boolean = null;   // по-умолчанию будут показываться задачи по всем статусам (решенные и нерешенные)
+  public selectedPriorityFilter: Priority = null; // поиск по приоритету
 
   constructor(
     private dataHandler: DataHandlerService, // доступ к данным
@@ -209,6 +220,14 @@ export class TasksComponent implements OnInit {
     if (value !== this.selectedStatusFilter) {
       this.selectedStatusFilter = value;
       this.filterByStatus.emit(this.selectedStatusFilter);
+    }
+  }
+
+  // фильтрация по приоритету
+  onFilterByPriority(value: Priority) {
+    if (value !== this.selectedPriorityFilter) {
+      this.selectedPriorityFilter = value
+      this.filterByPriority.emit(this.selectedPriorityFilter)
     }
   }
 }

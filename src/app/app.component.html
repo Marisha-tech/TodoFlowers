@@ -227,7 +227,9 @@
 
               (filterByStatus)="onFilterTasksByStatus($event)"
               (filterByTitle)="onSearchTasks($event)"
+              (filterByPriority)="onFilterTasksByPriority($event)"
               [tasks]="tasks"
+              [priorities]="priorities"
             ></app-tasks>
           </div>
         </div>
