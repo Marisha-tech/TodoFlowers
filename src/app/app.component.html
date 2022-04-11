@@ -5,7 +5,6 @@
       id="sidenav-main">
       <app-categories
         (selectCategory)="onSelectCategory($event)"
-
         (deleteCategory)="onDeleteCategory($event)"
         (updateCategory)="onUpdateCategory($event)"
 
@@ -223,7 +222,10 @@
             <app-tasks
               (updateTask)="onUpdateTask($event)"
               (deleteTask)="onDeleteTask($event)"
+              (addTask)="onAddTask($event)"
+
               (selectCategory)="onSelectCategory($event)"
+              [selectedCategory]="selectedCategory"
 
               (filterByStatus)="onFilterTasksByStatus($event)"
               (filterByTitle)="onSearchTasks($event)"

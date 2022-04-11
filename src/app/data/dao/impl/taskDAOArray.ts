@@ -15,8 +15,12 @@ export class TaskDAOArray implements TaskDAO {
     return undefined;
   }
 
-  add(T): Observable<Task> {
-    return undefined;
+  add(task: Task): Observable<Task> {
+    if (task.id === null || task.id === 0) {
+      task.id = this.getLastIdTask()
+    }
+    TestData.tasks.push(task)
+    return of(task)
   }
 
   delete(id: number): Observable<Task> {
@@ -77,5 +81,10 @@ export class TaskDAOArray implements TaskDAO {
     const taskTmp = TestData.tasks.find(t => t.id === task.id) //обновляем по id
     TestData.tasks.splice(TestData.tasks.indexOf(taskTmp), 1, task)
     return of(task)
+  }
+
+  // находит последний id (чтобы вставить новую запись с id, увеличенным на 1) - в реальной БД не нужно высчитывать id последней задачи
+  public getLastIdTask(): number {
+    return Math.max.apply(Math, TestData.tasks.map(task => task.id)) + 1
   }
 }
