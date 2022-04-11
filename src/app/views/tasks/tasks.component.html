@@ -77,7 +77,11 @@
         </button>
       </div>
       <div class="col-md-6">
-        <button mat-raised-button color="primary">Добавить</button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openAddTaskDialog()"
+        >Добавить</button>
       </div>
     </div>
   </div>

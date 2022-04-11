@@ -53,4 +53,8 @@ export class DataHandlerService {
   updateCategory(category: Category): Observable<Category> {
     return this.categoryDAOArray.update(category)
   }
+
+  addTask(task: Task): Observable<Task> {
+    return this.taskDaoArray.add(task)
+  }
 }

@@ -123,5 +123,10 @@ export class AppComponent implements OnInit {
     })
   }
 
-
+//добавление задачи
+  onAddTask(task: Task) {
+    this.dataHandler.addTask(task).subscribe(result => {
+      this.updateTasks()
+    })
+  }
 }

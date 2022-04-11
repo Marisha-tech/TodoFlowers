@@ -67,6 +67,10 @@ export class TasksComponent implements OnInit {
   @Output()
   filterByPriority = new EventEmitter<Priority>()
 
+  @Output()
+  private addTask= new EventEmitter<Task>();
+
+  @Input()
   selectedCategory: Category
 
   //поиск
@@ -229,5 +233,18 @@ export class TasksComponent implements OnInit {
       this.selectedPriorityFilter = value
       this.filterByPriority.emit(this.selectedPriorityFilter)
     }
+  }
+
+  //диалоговое окно для добавления задачи
+  openAddTaskDialog() {
+    const task = new Task(null, '', false, null, this.selectedCategory)
+
+    const dialogRef = this.dialog.open(EditTaskDialogComponent, {data: [task, 'Добавление задачи']})
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.addTask.emit(task)
+      }
+    })
   }
 }
