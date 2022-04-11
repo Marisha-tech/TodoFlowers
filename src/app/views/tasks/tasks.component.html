@@ -6,7 +6,6 @@
         #filterInput
         (keydown.escape)="searchTaskText=''; onFilterByTitle()"
         (keyup)="onFilterByTitle()"
-        value="1111"
         [(ngModel)]="searchTaskText"
         matInput>
 
@@ -24,7 +23,7 @@
 
   <div class="col-md-3 col-sm-12"><!--фильтр по статусу-->
     <mat-form-field class="example-form-field task__input">
-      <mat-label>Фильтр по статусам</mat-label>
+      <mat-label class="task__placeholder">Фильтр по статусам</mat-label>
       <mat-select #statusFilter
                   (valueChange)="onFilterByStatus($event)"
                   [value]="selectedStatusFilter">
