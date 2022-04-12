@@ -85,13 +85,20 @@
 
   <div class="col-md-7 col-12 mb-3">
     <button mat-button mat-raised-button color="accent"
-            *ngIf="!task.completed"
-            (click)="complete()">Завершить задачу
+            *ngIf="!task.completed && canActivateDeactivate()"
+            (click)="complete()"
+    >Завершить задачу
     </button>
     <button mat-button mat-raised-button color="accent"
-            *ngIf="task.completed"
+            *ngIf="task.completed && canActivateDeactivate()"
             (click)="activate()">Активировать задачу
     </button>
-    <button mat-button mat-raised-button color="warn" (click)="delete()">Удалить</button>
+    <button
+      mat-button
+      mat-raised-button
+      color="warn"
+      *ngIf="canDelete()"
+      (click)="delete()"
+    >Удалить</button>
   </div>
 </div>

@@ -5,6 +5,7 @@ import {Task} from "../../model/Task";
 import {Category} from "../../model/Category";
 import {Priority} from "../../model/Priority";
 import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
+import {OperType} from "../operType";
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -12,14 +13,6 @@ import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component
   styleUrls: ['./edit-task-dialog.component.scss']
 })
 export class EditTaskDialogComponent implements OnInit {
-
-  constructor(
-    private dialogRef: MatDialogRef<EditTaskDialogComponent>, // для возможности работы с текущим диалоговым окном
-    @Inject(MAT_DIALOG_DATA) private data: [Task, string], // данные, которые передали в диалоговое окно
-    private dataHandler: DataHandlerService, // ссылка на сервис для работы с данными
-    private dialog: MatDialog, // для открытия нового диалогового окна (из текущего) - например для подтверждения удаления
-  ) {
-  }
 
   public categories: Category[]
   public priorities: Priority[]
@@ -33,21 +26,29 @@ export class EditTaskDialogComponent implements OnInit {
   public tmpCategory: Category
   public tmpPriority: Priority;
   public tmpDate: Date;
+  public operType: OperType // тип операции
 
-
+  constructor(
+    private dialogRef: MatDialogRef<EditTaskDialogComponent>, // для возможности работы с текущим диалоговым окном
+    @Inject(MAT_DIALOG_DATA) private data: [Task, string, OperType], // данные, которые передали в диалоговое окно
+    private dataHandler: DataHandlerService, // ссылка на сервис для работы с данными
+    private dialog: MatDialog, // для открытия нового диалогового окна (из текущего) - например для подтверждения удаления
+  ) {
+  }
 
   ngOnInit(): void {
     this.task = this.data[0] // задача для редактирования/создания
     this.dialogTitle = this.data[1] // текст для диалогового окна
+    this.operType = this.data[2] // тип операции
+    console.log(this.operType, 'Редактирование задачи')
 
-    //инициализаия начальных значений (записываем в отдельные переменные)
+
+    //инициализация начальных значений (записываем в отдельные переменные)
     // чтобы можно было отменить изменения, а то будут сразу записываться в задачу
     this.tmpTitle = this.task.title
     this.tmpCategory = this.task.category
     this.tmpPriority = this.task.priority
     this.tmpDate = this.task.date
-
-    console.log(this.tmpDate)
 
     this.dataHandler.getAllCategories().subscribe(items => this.categories = items)
     this.dataHandler.getAllPriorities().subscribe(items => this.priorities = items)
@@ -101,4 +102,13 @@ export class EditTaskDialogComponent implements OnInit {
     // this.task.completed = true
     this.dialogRef.close('complete')
   }
+
+  canDelete(): boolean {
+    return this.operType === OperType.EDIT
+  }
+
+  canActivateDeactivate(): boolean {
+    return this.operType === OperType.EDIT
+  }
+
 }
