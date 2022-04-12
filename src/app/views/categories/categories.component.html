@@ -2,7 +2,11 @@
   <span class="ms-1 font-weight-bold text-white">Категории</span>
   <!--иконка добавления категории-->
   <span>
-    <button mat-icon-button class="add-icon">
+    <button
+      mat-icon-button
+      class="add-icon"
+      (click)="openAddCategoryDialog()"
+    >
       <mat-icon>add</mat-icon>
     </button>
     </span>

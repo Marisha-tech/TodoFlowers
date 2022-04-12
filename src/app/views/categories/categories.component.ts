@@ -3,6 +3,7 @@ import {DataHandlerService} from "../../services/data-handler.service";
 import {Category} from "../../model/Category";
 import {MatDialog} from "@angular/material/dialog";
 import {EditCategoryDialogComponent} from "../../dialog/edit-category-dialog/edit-category-dialog.component";
+import {OperType} from "../../dialog/operType";
 
 @Component({
   selector: 'app-categories',
@@ -13,6 +14,9 @@ export class CategoriesComponent implements OnInit {
 
   @Input()
   public categories?: Category[]
+
+  @Input()
+  selectedCategory: Category
 
   //выбрали категорию из списка
   @Output()
@@ -26,8 +30,13 @@ export class CategoriesComponent implements OnInit {
   @Output()
   updateCategory = new EventEmitter<Category>()
 
-  @Input()
-  selectedCategory: Category
+  // добавили категорию
+  @Output()
+  addCategory = new EventEmitter<string>() // передаем только название новой категории
+
+  // поиск категории
+  @Output()
+  searchCategory = new EventEmitter<string>(); // передаем строку для поиска
 
   //для отображения иконки редактирования при наведении на категорию
   indexMouseMove: number;
@@ -35,26 +44,21 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private dataHandler: DataHandlerService,
     private dialog: MatDialog
-  ) {
-  }
+  ) {  }
 
   ngOnInit(): void {
-    // this.dataHandler.categoriesSubject.subscribe(categories => this.categories = categories)
-    // this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories)
   }
 
   showTasksByCategory(category: Category): void {
-    // this.selectedCategory = category
-    // this.dataHandler.fillTasksByCategory(category)
+
     //если не изменилось значение, ничего не делать (чтобы лишний раз не делать запрос данных)
     if (this.selectedCategory === category) {
       return
     }
     this.selectedCategory = category //сохраняем выбранную категорию
-    console.log(category)
+
     //вызываем вешний обработчик и передаем туда выбранную категорию
     this.selectCategory.emit(this.selectedCategory)
-
 
   }
 
@@ -67,7 +71,7 @@ export class CategoriesComponent implements OnInit {
   openEditCategoryDialog(category: Category) {
 
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
-      data: [category.title, 'Редактирование категории'],
+      data: [category.title, 'Редактирование категории', OperType.EDIT],
       width: "400px",
     })
 
@@ -86,6 +90,20 @@ export class CategoriesComponent implements OnInit {
         return;
       }
 
+    })
+  }
+
+  //диалоговое окно для добавления категории
+  openAddCategoryDialog() {
+
+    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+      data: ['', 'Добавление категории', OperType.ADD],
+      width: '400px'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.addCategory.emit(result as string) // вызываем внешний обработчик
+      }
     })
   }
 }

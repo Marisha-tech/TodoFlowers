@@ -4,7 +4,7 @@
 
   <!--название категории-->
   <mat-form-field appearance="fill">
-    <mat-label>Название (обязательно)</mat-label>
+    <mat-label>Название (15 символов)</mat-label>
     <input
       #inputTitle
       matInput
@@ -37,7 +37,7 @@
     <button mat-button mat-raised-button (click)="onCancel()">Отмена</button>
     <button mat-button mat-raised-button color="warn"
             class="not-margin"
-            *ngIf="canDelete"
+            *ngIf="canDelete()"
             (click)="delete()">Удалить
     </button>
   </div>

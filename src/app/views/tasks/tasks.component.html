@@ -108,11 +108,12 @@
             <!-- название задачи-->
             <ng-container cdkColumnDef="title">
               <th cdk-header-cell *cdkHeaderCellDef mat-sort-header> Название</th>
-              <td class="col-title pointer" cdk-cell *cdkCellDef="let task"
-                  [ngClass]="{'completed': task.completed}"
-                  (click)="openEditTaskDialog(task)"
+              <td
+                class="col-title pointer"
+                cdk-cell *cdkCellDef="let task"
+                [ngClass]="{'completed': task.completed}"
+                (click)="openEditTaskDialog(task)"
               >
-
                 {{task.title}}
               </td>
             </ng-container>
