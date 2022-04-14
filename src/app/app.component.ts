@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   public priorityFilter: Priority
 
   // public selectedTask: Task = null
+  private searchCategoryText: string;
 
   constructor(private dataHandler: DataHandlerService) {
   }
@@ -81,16 +82,18 @@ export class AppComponent implements OnInit {
     })
   }
 
+  // удаление категории
   onDeleteCategory(category: Category) {
     this.dataHandler.deleteCategory(category.id).subscribe(cat => {
       this.selectedCategory = null // открываем категорию "все"
-      this.onSelectCategory(this.selectedCategory)
+      this.onSearchCategory(this.searchCategoryText)
     })
   }
 
+  // обновление категории
   onUpdateCategory(category: Category) {
     this.dataHandler.updateCategory(category).subscribe(() => {
-      this.onSelectCategory(this.selectedCategory)
+      this.onSearchCategory(this.searchCategoryText)
     })
   }
 
@@ -139,5 +142,15 @@ export class AppComponent implements OnInit {
 
   private updateCategories() {
     this.dataHandler.getAllCategories().subscribe(categories => this.categories = categories);
+  }
+
+  // поиск категории
+  onSearchCategory(title: string) {
+
+    this.searchCategoryText = title
+
+    this.dataHandler.searchCategories(title).subscribe(categories => {
+      this.categories = categories
+    })
   }
 }

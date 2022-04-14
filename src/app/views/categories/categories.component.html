@@ -12,8 +12,35 @@
     </span>
 </div>
 <hr class="horizontal light mt-0 mb-2">
+<div>
+
+</div>
+
 <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
   <ul class="navbar-nav">
+
+    <div>
+      <!--   поиск категории-->
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Поиск категории</mat-label>
+        <input
+          #inputSearchCategory
+          (keydown.escape)="searchCategoryTitle=''; search()"
+          (keyup)="search()"
+          [(ngModel)]="searchCategoryTitle"
+          matInput
+        >
+
+        <button
+          (click)="searchCategoryTitle=''; search()"
+          *ngIf="inputSearchCategory.value.trim().length>0"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
     <!--виртуальная категория-->
     <li class="nav-item"
         (click)="showTasksByCategory(null)">
@@ -22,6 +49,8 @@
         <span class="nav-link-text ms-1">Все</span>
       </a>
     </li>
+
+
     <!--разделитель-->
     <hr class="horizontal light">
 

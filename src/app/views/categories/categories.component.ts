@@ -40,11 +40,13 @@ export class CategoriesComponent implements OnInit {
 
   //для отображения иконки редактирования при наведении на категорию
   indexMouseMove: number;
+  searchCategoryTitle: string; // текущее значение для поиска категорий
 
   constructor(
     private dataHandler: DataHandlerService,
     private dialog: MatDialog
-  ) {  }
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -94,6 +96,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   //диалоговое окно для добавления категории
+
   openAddCategoryDialog() {
 
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
@@ -105,5 +108,14 @@ export class CategoriesComponent implements OnInit {
         this.addCategory.emit(result as string) // вызываем внешний обработчик
       }
     })
+  }
+
+  // поиск категории
+  search() {
+    if (this.searchCategoryTitle == null) {
+      return
+    }
+
+    this.searchCategory.emit(this.searchCategoryTitle)
   }
 }
