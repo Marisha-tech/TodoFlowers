@@ -91,7 +91,9 @@ export class TasksComponent implements OnInit {
 
     //dataSource обязательно нужно создавать для таблицы. В него присваивается любой источник (БД, массивы, JSON)
     this.dataSource = new MatTableDataSource<Task>(this.tasks)
-    this.fillTable() //заполняем таблицы данными (задачи) и всеми метаданными
+    // this.fillTable() //заполняем таблицы данными (задачи) и всеми метаданными
+
+    this.onSelectCategory(null)
   }
 
   // в этом методе уже все проинициализировано, поэтому можно присваивать объекты. Иначе может быть ошибка undefined

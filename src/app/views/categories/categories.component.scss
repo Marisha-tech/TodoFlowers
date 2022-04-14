@@ -8,6 +8,12 @@
   &__icon {
     width: 20%;
   }
+
+  &__not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .pointer {
