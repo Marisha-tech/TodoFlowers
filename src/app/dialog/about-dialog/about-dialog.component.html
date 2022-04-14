@@ -1,0 +1,17 @@
+<!--диалоговое окно-описание программы-->
+
+<h1 class="mat-dialog-title">{{dialogTitle}}</h1>
+
+<div class="mat-dialog-content">
+  <p>{{message}}</p>
+</div>
+
+<!--кнопки возможных действий-->
+<div class="mat-dialog-actions">
+  <button
+    class="mat-raised-button"
+    color="primary"
+    (click)="onConfirm()"
+  >Ок
+  </button>
+</div>
