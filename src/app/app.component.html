@@ -24,7 +24,11 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <app-statistic></app-statistic>
+      <app-statistic
+      [totalTasksInCategory]="totalTasksCountInCategory"
+      [completeTasksInCategory]="completedCountInCategory"
+      [uncompleteTasksInCategory]="uncompletedCountInCategory"
+      ></app-statistic>
       <div class="row mb-4">
         <div class="col col-mb-4">
           <app-tasks
