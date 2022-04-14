@@ -55,6 +55,7 @@
     <hr class="horizontal light">
 
     <!--категории-->
+    <div *ngIf="categories.length===0"><p class="category__not-found">Ничего не найдено</p></div>
     <li
       class="nav-item"
       *ngFor="let category of categories; let index=index"
@@ -80,5 +81,6 @@
         </span>
       </a>
     </li>
+
   </ul>
 </div>
