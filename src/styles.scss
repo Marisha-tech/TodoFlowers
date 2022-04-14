@@ -61,3 +61,10 @@ body {
   width: 0!important;
 }
 
+@media (min-width: 1200px){
+  .sidenav.fixed-start + .main-content {
+    margin-left: 0
+  }
+}
+
+
