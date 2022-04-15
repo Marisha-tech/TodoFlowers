@@ -1,0 +1,21 @@
+<div *ngFor="let priority of priorities, let index = index">
+  <div class="row">
+    <div class="col-7">
+      <a>{{priority.title}}</a>
+    </div>
+
+    <div class="col-2">
+      <span [(colorPicker)]="priority.color" [style.background]="priority.color" class="color-circle"></span>
+    </div>
+
+    <div class="col-1">
+      <mat-icon>delete</mat-icon>
+    </div>
+    <div class="col-1">
+      <mat-icon>edit</mat-icon>
+    </div>
+  </div>
+
+</div>
+<p>Добавить приоритет</p>
+
