@@ -22,6 +22,8 @@
          navbar-scroll="true">
       <app-header
       [categoryName]="selectedCategory ? selectedCategory.title: 'Все'"
+      (toggleStat)="toggleStat($event)"
+      [showStat]="showStat"
       ></app-header>
     </nav>
     <!-- End Navbar -->
@@ -30,6 +32,7 @@
       [totalTasksInCategory]="totalTasksCountInCategory"
       [completeTasksInCategory]="completedCountInCategory"
       [uncompleteTasksInCategory]="uncompletedCountInCategory"
+      [showStat]="showStat"
       ></app-statistic>
       <div class="row mb-4">
         <div class="col col-mb-4">

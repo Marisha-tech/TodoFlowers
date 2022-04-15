@@ -1,41 +1,43 @@
-<div class="row py-4">
+<div *ngIf="showStat">
+  <div class="row py-4">
 
-  <app-statistic-card
-    class="col-xl-3 col-sm-6 mb-xl-0 mb-4"
-    title="Завершенные задачи"
-    iconName="done"
-    [count1]="completeTasksInCategory"
-    [countTotal]="totalTasksInCategory"
-    [completed]="true"
-  >
-  </app-statistic-card>
+    <app-statistic-card
+      class="col-xl-3 col-sm-6 mb-xl-0 mb-4"
+      title="Завершенные задачи"
+      iconName="done"
+      [count1]="completeTasksInCategory"
+      [countTotal]="totalTasksInCategory"
+      [completed]="true"
+    >
+    </app-statistic-card>
 
-  <app-statistic-card
-    class="col-xl-3 col-sm-6 mb-xl-0 mb-4"
-    title="Незавершенные задачи"
-    iconName="thumb_down_alt"
-    [count1]="uncompleteTasksInCategory"
-    [countTotal]="totalTasksInCategory"
-    [completed]="true"
-  >
-  </app-statistic-card>
+    <app-statistic-card
+      class="col-xl-3 col-sm-6 mb-xl-0 mb-4"
+      title="Незавершенные задачи"
+      iconName="thumb_down_alt"
+      [count1]="uncompleteTasksInCategory"
+      [countTotal]="totalTasksInCategory"
+      [completed]="true"
+    >
+    </app-statistic-card>
 
-  <app-statistic-card
-    class="col-xl-3 col-sm-6 mb-xl-0 mb-4"
-    title="Процент завершенных задач"
-    iconName="poll"
-    [count1]="completeTasksInCategory ? (completeTasksInCategory/totalTasksInCategory | percent) : '0%'"
-    [completed]="true"
-  >
-  </app-statistic-card>
+    <app-statistic-card
+      class="col-xl-3 col-sm-6 mb-xl-0 mb-4"
+      title="Процент завершенных задач"
+      iconName="poll"
+      [count1]="completeTasksInCategory ? (completeTasksInCategory/totalTasksInCategory | percent) : '0%'"
+      [completed]="true"
+    >
+    </app-statistic-card>
 
-  <app-statistic-card
-    class="col-xl-3 col-sm-6"
-    title="Процент незавершенных задач"
-    iconName="thumb_down_alt"
-    [count1]="uncompleteTasksInCategory ? (uncompleteTasksInCategory/totalTasksInCategory | percent) : '0%'"
-    [completed]="true"
-  >
-  </app-statistic-card>
+    <app-statistic-card
+      class="col-xl-3 col-sm-6"
+      title="Процент незавершенных задач"
+      iconName="thumb_down_alt"
+      [count1]="uncompleteTasksInCategory ? (uncompleteTasksInCategory/totalTasksInCategory | percent) : '0%'"
+      [completed]="true"
+    >
+    </app-statistic-card>
 
+  </div>
 </div>
