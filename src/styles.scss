@@ -20,6 +20,10 @@ body {
   cursor: pointer;
 }
 
+app-header {
+  width: 100%;
+}
+
 .mat-dialog-content {
   //padding: 40px !important;
 }
@@ -57,11 +61,12 @@ body {
 .navbar-vertical.navbar-expand-xs {
   position: relative;
 }
-.mat-form-field-appearance-fill .mat-form-field-underline::before{
-  width: 0!important;
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+  width: 0 !important;
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
   .sidenav.fixed-start + .main-content {
     margin-left: 0
   }
