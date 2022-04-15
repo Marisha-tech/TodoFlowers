@@ -309,8 +309,11 @@ TodosComponent, CategoriesComponent - dumb, presentational, pure
 <p>**Dumb** - все компоненты для отображения</p>
 <p>Можно изменять внутреннюю реализацию, но это не отразится на работу приложения (т.к. API из набора @Input и @Output не меняется)</p>
 <p>Легче тестировать</p>
-<p></p>
-<p></p>
+
+## Выбор цвета
+https://www.npmjs.com/package/ngx-color-picker
+<p><code>ngx-color-picker</code> - готовый компонент для выбора цвета в палитре</p>
+<p><code>ColorPickerModule</code> - добавить в app.module.ts</p>
 <p></p>
 <p></p>
 <p></p>

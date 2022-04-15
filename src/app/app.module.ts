@@ -31,6 +31,9 @@ import {AboutDialogComponent} from './dialog/about-dialog/about-dialog.component
 import { HeaderComponent } from './views/header/header.component';
 import { StatisticComponent } from './views/statistic/statistic.component';
 import { StatisticCardComponent } from './views/statistic/statistic-card/statistic-card.component';
+import {ColorPickerModule} from "ngx-color-picker";
+import { PrioritiesComponent } from './views/priorities/priorities.component';
+import { SettingsDialogComponent } from './dialog/settings-dialog/settings-dialog.component';
 
 registerLocaleData(localeRu)
 @NgModule({
@@ -46,7 +49,9 @@ registerLocaleData(localeRu)
     AboutDialogComponent,
     HeaderComponent,
     StatisticComponent,
-    StatisticCardComponent
+    StatisticCardComponent,
+    PrioritiesComponent,
+    SettingsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,10 +72,11 @@ registerLocaleData(localeRu)
     MatDatepickerModule, // работа с датами - визуальный компонент
     MatNativeDateModule, // работа  с датами
     MatCheckboxModule, // работа с чекбоксами
+    ColorPickerModule, // для выбора цвета приоритета
 
   ],
   providers: [],
-  entryComponents: [EditTaskDialogComponent, ConfirmDialogComponent, EditCategoryDialogComponent, AboutDialogComponent],
+  entryComponents: [EditTaskDialogComponent, ConfirmDialogComponent, EditCategoryDialogComponent, AboutDialogComponent, SettingsDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

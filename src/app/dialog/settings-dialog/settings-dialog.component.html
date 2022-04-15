@@ -1,0 +1,18 @@
+<!--диалоговое окно настроек приложения-->
+
+<mat-dialog-content class="mat-typography">
+
+  <p mat-dialog-title>Настройка приоритетов</p>
+  <p>* При изменении - цвет сразу будет отображаться в таблице</p>
+
+  <app-priorities [priorities]="priorities"></app-priorities>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onClose()"
+  >Закрыть</button>
+</mat-dialog-actions>
