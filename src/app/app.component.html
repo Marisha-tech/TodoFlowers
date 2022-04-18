@@ -20,20 +20,25 @@
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
          navbar-scroll="true">
+
       <app-header
-      [categoryName]="selectedCategory ? selectedCategory.title: 'Все'"
-      (toggleStat)="toggleStat($event)"
-      [showStat]="showStat"
-      ></app-header>
+        [categoryName]="selectedCategory ? selectedCategory.title: 'Все'"
+        (toggleStat)="toggleStat($event)"
+        [showStat]="showStat"
+      >
+      </app-header>
+
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <app-statistic
-      [totalTasksInCategory]="totalTasksCountInCategory"
-      [completeTasksInCategory]="completedCountInCategory"
-      [uncompleteTasksInCategory]="uncompletedCountInCategory"
-      [showStat]="showStat"
-      ></app-statistic>
+        [totalTasksInCategory]="totalTasksCountInCategory"
+        [completeTasksInCategory]="completedCountInCategory"
+        [uncompleteTasksInCategory]="uncompletedCountInCategory"
+        [showStat]="showStat"
+      >
+      </app-statistic>
+
       <div class="row mb-4">
         <div class="col col-mb-4">
           <app-tasks
@@ -49,10 +54,13 @@
             (filterByPriority)="onFilterTasksByPriority($event)"
             [tasks]="tasks"
             [priorities]="priorities"
-          ></app-tasks>
+          >
+          </app-tasks>
         </div>
       </div>
+
       <app-footer></app-footer>
+
     </div>
   </main>
 </div>

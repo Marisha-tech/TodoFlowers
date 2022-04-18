@@ -28,14 +28,16 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {EditCategoryDialogComponent} from './dialog/edit-category-dialog/edit-category-dialog.component';
 import {FooterComponent} from './views/footer/footer.component';
 import {AboutDialogComponent} from './dialog/about-dialog/about-dialog.component';
-import { HeaderComponent } from './views/header/header.component';
-import { StatisticComponent } from './views/statistic/statistic.component';
-import { StatisticCardComponent } from './views/statistic/statistic-card/statistic-card.component';
+import {HeaderComponent} from './views/header/header.component';
+import {StatisticComponent} from './views/statistic/statistic.component';
+import {StatisticCardComponent} from './views/statistic/statistic-card/statistic-card.component';
 import {ColorPickerModule} from "ngx-color-picker";
-import { PrioritiesComponent } from './views/priorities/priorities.component';
-import { SettingsDialogComponent } from './dialog/settings-dialog/settings-dialog.component';
+import {PrioritiesComponent} from './views/priorities/priorities.component';
+import {SettingsDialogComponent} from './dialog/settings-dialog/settings-dialog.component';
+import {EditPriorityDialogComponent} from './dialog/edit-priority-dialog/edit-priority-dialog.component';
 
 registerLocaleData(localeRu)
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,8 @@ registerLocaleData(localeRu)
     StatisticComponent,
     StatisticCardComponent,
     PrioritiesComponent,
-    SettingsDialogComponent
+    SettingsDialogComponent,
+    EditPriorityDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,14 @@ registerLocaleData(localeRu)
 
   ],
   providers: [],
-  entryComponents: [EditTaskDialogComponent, ConfirmDialogComponent, EditCategoryDialogComponent, AboutDialogComponent, SettingsDialogComponent],
+  entryComponents: [
+    EditTaskDialogComponent,
+    ConfirmDialogComponent,
+    EditCategoryDialogComponent,
+    AboutDialogComponent,
+    SettingsDialogComponent,
+    EditPriorityDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
