@@ -46,7 +46,10 @@
         (click)="showTasksByCategory(null)">
       <a class="nav-link text-white pointer"
          [class.bg-gradient-primary]="selectedCategory===null">
-        <span class="nav-link-text ms-1">Все</span>
+        <span class="category__all nav-link-text ms-1">Все</span>
+
+        <!--сколько невыполненных задач-->
+        <span class="category__uncompleted--count">{{uncompletedTotal}}</span>
       </a>
     </li>
 
@@ -81,7 +84,7 @@
         </span>
 
         <!--сколько невыполненных задач-->
-        <span class="uncompleted-count"> {{mapValue.value}}</span>
+        <span class="category__uncompleted--count"> {{mapValue.value}}</span>
 
       </a>
     </li>
