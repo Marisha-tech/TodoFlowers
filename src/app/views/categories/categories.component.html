@@ -58,27 +58,31 @@
     <div *ngIf="categories.length===0"><p class="category__not-found">Ничего не найдено</p></div>
     <li
       class="nav-item"
-      *ngFor="let category of categories; let index=index"
-      (click)="showTasksByCategory(category)"
+      (click)="showTasksByCategory(mapValue.key)"
+      *ngFor="let mapValue of selectedCategoryMap | keyvalue; let index=index"
       (mouseleave)="showEditIcon(null)"
       (mouseenter)="showEditIcon(index)"
     >
       <a
         class="nav-link text-white pointer"
-        [class.bg-gradient-primary]="category===selectedCategory">
+        [class.bg-gradient-primary]="mapValue.key===selectedCategory">
 
         <!--название категории-->
-        <span class="category__title nav-link-text ms-1">{{category.title}}</span>
+        <span class="category__title nav-link-text ms-1">{{mapValue.key.title}}</span>
 
         <!--кнопка редактирования категории-->
         <span class="category__icon">
            <button mat-icon-button class="icon-edit">
               <mat-icon
                 *ngIf="indexMouseMove===index"
-                (click)="$event.stopPropagation(); openEditCategoryDialog(category)"
+                (click)="$event.stopPropagation(); openEditCategoryDialog(mapValue.key)"
               >edit</mat-icon>
             </button>
         </span>
+
+        <!--сколько невыполненных задач-->
+        <span class="uncompleted-count"> {{mapValue.value}}</span>
+
       </a>
     </li>
 
