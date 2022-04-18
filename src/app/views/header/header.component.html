@@ -1,10 +1,10 @@
 <div class="container-fluid py-1 px-3">
 
   <div class="row">
-    <div class="col-10">
-      <p class="navbar-brand">{{categoryName}}</p>
-      <p (click)="onToggleStat()" *ngIf="showStat">Скрыть статистику</p>
-      <p (click)="onToggleStat()" *ngIf="!showStat">Показать статистику</p>
+    <div class="col-10 header__title">
+      <p class="header__all--categories">{{categoryName}}</p>
+      <p class="header__statistic" (click)="onToggleStat()" *ngIf="showStat">Скрыть статистику</p>
+      <p class="header__statistic" (click)="onToggleStat()" *ngIf="!showStat">Показать статистику</p>
     </div>
     <div class="col-2">
       <button mat-icon-button>

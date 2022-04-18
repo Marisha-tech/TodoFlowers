@@ -2,6 +2,7 @@
   <aside
     class="sidenav navbar navbar-vertical navbar-custom navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  bg-gradient-dark"
     id="sidenav-main">
+
     <div class="category__intro">
       <app-categories
         (selectCategory)="onSelectCategory($event)"
@@ -10,6 +11,7 @@
         (addCategory)="onAddCategory($event)"
         (searchCategory)="onSearchCategory($event)"
         [categoryMap]="categoryMap"
+        [uncompletedTotal]="uncompletedTotalTasksCategory"
 
         [selectedCategory]="selectedCategory"
         [categories]="categories"
