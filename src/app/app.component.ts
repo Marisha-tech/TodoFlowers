@@ -117,7 +117,11 @@ export class AppComponent implements OnInit {
       })
     ).subscribe(result => {
       const t = result.t as Task
-      this.categoryMap.set(t.category, result.count)
+
+      // чтобы не обновлять весь список - обновим точечно
+      if (t.category){
+        this.categoryMap.set(t.category, result.count)
+      }
       this.updateTasksAndStat()
     })
 
