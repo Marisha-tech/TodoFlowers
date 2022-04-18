@@ -29,9 +29,6 @@ export class DataHandlerService {
     return this.categoryDAOArray.getAll()
   }
 
-  getAllPriorities(): Observable<Priority[]> {
-    return this.priorityDAOArray.getAll()
-  }
 
 // поиск задач по параметрам
   searchTasks(category: Category, searchText: string, status: boolean, priority: Priority): Observable<Task[]> {
@@ -81,5 +78,23 @@ export class DataHandlerService {
 
   getUncompletedTotalCount(): Observable<number> {
     return this.taskDaoArray.getUncompletedCountInCategory(null)
+  }
+
+  // приоритеты
+
+  getAllPriorities(): Observable<Priority[]> {
+    return this.priorityDAOArray.getAll()
+  }
+
+  addPriority(priority: Priority): Observable<Priority> {
+    return this.priorityDAOArray.add(priority)
+  }
+
+  deletePriority(id: number) {
+    return this.priorityDAOArray.delete(id)
+  }
+
+  updatePriority(priority: Priority): Observable<Priority> {
+    return this.priorityDAOArray.update(priority)
   }
 }

@@ -1,0 +1,44 @@
+<!--добавление приоритета-->
+<div mat-dialog-content>
+  <p mat-dialog-title>{{dialogTitle}}</p>
+
+  <!--название категории-->
+  <mat-form-field appearance="fill">
+    <mat-label>Название (20 символов)</mat-label>
+    <input
+      #inputTitle
+      matInput maxlength="20"
+      [(ngModel)]="priorityTitle"
+      (keydown.enter)="onConfirm()">
+    <!--по нажатию на enter можем сразу сохранить категорию-->
+
+    <button
+      *ngIf="priorityTitle.trim().length > 0"
+      matSuffix mat-icon-button aria-label="Clear"
+      (click)="priorityTitle=''" class="dialog-task-title">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<!--кнопки возможных действий-->
+<div mat-dialog-actions>
+  <div class="col-md-12 col-12 mb-3">
+    <button
+      class="mb-2"
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="onConfirm()"
+      [disabled]="inputTitle.value.trim().length==0">
+      <!--если пустой текст - кнопка "Сохранить"-->
+      Сохранить
+    </button>
+    <button mat-button mat-raised-button (click)="onCancel()">Отмена</button>
+    <button mat-button mat-raised-button color="warn"
+            class="not-margin"
+            *ngIf="canDelete()"
+            (click)="delete()">Удалить
+    </button>
+  </div>
+</div>

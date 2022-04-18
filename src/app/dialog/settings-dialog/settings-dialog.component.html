@@ -5,7 +5,12 @@
   <p mat-dialog-title>Настройка приоритетов</p>
   <p>* При изменении - цвет сразу будет отображаться в таблице</p>
 
-  <app-priorities [priorities]="priorities"></app-priorities>
+  <app-priorities
+    [priorities]="priorities"
+    (addPriority)="onAddPriority($event)"
+    (deletePriority)="onDeletePriority($event)"
+    (updatePriority)="onUpdatePriority($event)"
+  ></app-priorities>
 
 </mat-dialog-content>
 

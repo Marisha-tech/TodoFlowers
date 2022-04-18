@@ -9,13 +9,17 @@
     </div>
 
     <div class="col-1">
-      <mat-icon>delete</mat-icon>
+      <mat-icon
+        (click)="delete(priority)"
+      >delete</mat-icon>
     </div>
     <div class="col-1">
-      <mat-icon>edit</mat-icon>
+      <mat-icon
+      (click)="onEditPriority(priority)"
+      >edit</mat-icon>
     </div>
   </div>
 
 </div>
-<p>Добавить приоритет</p>
+<p class="priority__link" (click)="onAddPriority()">Добавить приоритет</p>
 
