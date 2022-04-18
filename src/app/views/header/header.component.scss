@@ -1,0 +1,17 @@
+.header {
+  &__title {
+    display: flex;
+    align-items: center;
+  }
+
+  &__statistic {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &__all--categories {
+    padding-right: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
