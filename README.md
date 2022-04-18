@@ -314,8 +314,11 @@ TodosComponent, CategoriesComponent - dumb, presentational, pure
 https://www.npmjs.com/package/ngx-color-picker
 <p><code>ngx-color-picker</code> - готовый компонент для выбора цвета в палитре</p>
 <p><code>ColorPickerModule</code> - добавить в app.module.ts</p>
-<p></p>
-<p></p>
+
+## Intro
+https://introjs.com/
+<p>intro.js - Популярная библиотека на JavaScript, у которой существует адаптированная версия под Angular</p>
+<p><code>npm install intro.js --save</code> - установка</p>
 <p></p>
 <p></p>
 <p></p>
