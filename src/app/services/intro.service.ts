@@ -26,14 +26,6 @@ export class IntroService {
     }
 
     this.introJS.setOptions(
-      // {
-      //   nextLabel: 'след. >',
-      //   prevLabel: '< пред.',
-      //   doneLabel: 'Выход',
-      //   skipLabel: 'Выход',
-      //   exitOnEsc: true,
-      //   exitOnOverlayClick: false
-      // }
       {
         steps: [
           {
@@ -42,6 +34,9 @@ export class IntroService {
             intro: 'Фильтрация задач, добавление/удаление/редактирование категорий',
             position: 'right',
             showProgress: true,
+            nextLabel: 'далее',
+            prevLabel: 'назад',
+            doneLabel: 'готово',
           },
           {
             title: 'Список задач',
