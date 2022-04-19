@@ -1,8 +1,22 @@
 .wrapper {
-  display: flex;
+  //display: flex;
   //justify-content: center;
 }
 
 .main-content {
   width: 100%;
+}
+
+.navbar {
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.category__navbar {
+  width: 300px;
+}
+
+.icon__navbar {
+  font-size: 30px;
+  cursor: pointer;
 }
