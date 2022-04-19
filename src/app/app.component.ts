@@ -7,12 +7,18 @@ import {zip} from "rxjs";
 import {concatMap, count, map} from "rxjs/operators";
 import {IntroService} from "./services/intro.service";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  events: string[] = [];
+  opened: boolean;
+
+  // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)localhost:4200\.io$/].some(h => h.test(window.location.host));
 
   // коллекции категорий с количеством незавершенных задач для каждой из них
   public categoryMap = new Map<Category, number>()
@@ -47,6 +53,7 @@ export class AppComponent implements OnInit {
   constructor(
     private dataHandler: DataHandlerService, // для работы с данными
     private introService: IntroService, // вводная справочная информация с выделением областей
+
   ) {
   }
 

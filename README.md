@@ -319,9 +319,13 @@ https://www.npmjs.com/package/ngx-color-picker
 https://introjs.com/
 <p>intro.js - Популярная библиотека на JavaScript, у которой существует адаптированная версия под Angular</p>
 <p><code>npm install intro.js --save</code> - установка</p>
-<p></p>
-<p></p>
-<p></p>
+
+## Слайд-меню
+
+https://www.npmjs.com/package/ng-sidebar
+<p>ng-sidebar</p>
+<p>Боковое слайд-меню формируется с помощью дополнительных тегов. Позволяет реализовать меню с любой стороны и по различным настройкам</p>
+<p><code>npm install --save ng-sidebar</code></p>
 <p></p>
 <p></p>
 <p></p>

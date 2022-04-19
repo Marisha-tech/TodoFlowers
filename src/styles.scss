@@ -67,6 +67,15 @@ app-header {
   width: 0 !important;
 }
 
+.mat-drawer-container {
+  background: none;
+  color: inherit;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+  height: auto;
+}
+
 @media (min-width: 1200px) {
   .sidenav.fixed-start + .main-content {
     margin-left: 0
