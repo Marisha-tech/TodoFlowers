@@ -4,6 +4,7 @@ import {Category} from "../../model/Category";
 import {MatDialog} from "@angular/material/dialog";
 import {EditCategoryDialogComponent} from "../../dialog/edit-category-dialog/edit-category-dialog.component";
 import {OperType} from "../../dialog/operType";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'app-categories',
@@ -14,6 +15,7 @@ export class CategoriesComponent implements OnInit {
 
   @Input()
   public categories?: Category[]
+  // public categoryMap: Map<Category, number> // список всех категорий и кол-во активных задач
 
   @Input()
   selectedCategory: Category
@@ -53,10 +55,16 @@ export class CategoriesComponent implements OnInit {
   searchCategoryTitle: string; // текущее значение для поиска категорий
   public selectedCategoryMap: Map<Category, number> // список всех категорий и кол-во активных задач
 
+  public isMobile: boolean
+  public isTablet: boolean
+
   constructor(
     private dataHandler: DataHandlerService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public deviceService: DeviceDetectorService, // для определения типа устройства
   ) {
+    this.isMobile = deviceService.isMobile()
+    this.isTablet = deviceService.isTablet()
   }
 
   ngOnInit(): void {

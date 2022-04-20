@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col-10 header__title">
       <p class="header__all--categories">{{categoryName}}</p>
-      <p class="header__statistic" (click)="onToggleStat()" *ngIf="showStat">Скрыть статистику</p>
-      <p class="header__statistic" (click)="onToggleStat()" *ngIf="!showStat">Показать статистику</p>
+      <p class="header__statistic" (click)="onToggleStat()" *ngIf="showStat && !isMobile">Скрыть статистику</p>
+      <p class="header__statistic" (click)="onToggleStat()" *ngIf="!showStat && !isMobile">Показать статистику</p>
     </div>
     <div class="col-2">
       <button mat-icon-button>
@@ -13,7 +13,9 @@
         >settings
         </mat-icon>
       </button>
-      <button (click)="showIntroHelp()"
+      <button
+        *ngIf="!isMobile"
+        (click)="showIntroHelp()"
               mat-icon-button>
         <mat-icon>help</mat-icon>
       </button>

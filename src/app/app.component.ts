@@ -6,6 +6,7 @@ import {Priority} from "./model/Priority";
 import {zip} from "rxjs";
 import {concatMap, count, map} from "rxjs/operators";
 import {IntroService} from "./services/intro.service";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 
 @Component({
@@ -17,8 +18,6 @@ export class AppComponent implements OnInit {
 
   events: string[] = [];
   opened: boolean;
-
-  // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)localhost:4200\.io$/].some(h => h.test(window.location.host));
 
   // коллекции категорий с количеством незавершенных задач для каждой из них
   public categoryMap = new Map<Category, number>()
@@ -49,12 +48,28 @@ export class AppComponent implements OnInit {
   public statusFilter: boolean
   public priorityFilter: Priority
 
+  // тип устройства
+  public isMobile: boolean
+  public isTablet: boolean
+
+  public sidenav: string
+  public mode: any = 'side'
+
 
   constructor(
     private dataHandler: DataHandlerService, // для работы с данными
     private introService: IntroService, // вводная справочная информация с выделением областей
-
+    private deviceService: DeviceDetectorService, // для определения типа устройства
   ) {
+
+    this.isMobile = deviceService.isMobile()
+    this.isTablet = deviceService.isTablet()
+
+    this.showStat = true ? !this.isMobile : false // если мобильное то не показывать статистику
+
+    if (this.isMobile){
+      this.mode = 'over'
+    }
   }
 
   ngOnInit(): void {
@@ -67,7 +82,10 @@ export class AppComponent implements OnInit {
 
     this.onSelectCategory(null) //показать все задачи
 
-    this.introService.startIntroJS(true)
+    // для мобильных устройств - не показывать подсказки
+    if (!this.isMobile && !this.isTablet) {
+      this.introService.startIntroJS(true)
+    }
   }
 
   // изменение категории
@@ -132,7 +150,7 @@ export class AppComponent implements OnInit {
       const t = result.t as Task
 
       // чтобы не обновлять весь список - обновим точечно
-      if (t.category){
+      if (t.category) {
         this.categoryMap.set(t.category, result.count)
       }
       this.updateTasksAndStat()
@@ -207,8 +225,8 @@ export class AppComponent implements OnInit {
     ).subscribe(result => {
       const t = result.t as Task
 
-    //  если указана категория - обновляем счетчик для соответствующей категории
-      if (t.category){
+      //  если указана категория - обновляем счетчик для соответствующей категории
+      if (t.category) {
         this.categoryMap.set(t.category, result.count)
       }
 
@@ -253,6 +271,7 @@ export class AppComponent implements OnInit {
 
     this.dataHandler.searchCategories(title).subscribe(categories => {
       this.categories = categories
+      this.fillCategories();
     })
   }
 
@@ -283,4 +302,5 @@ export class AppComponent implements OnInit {
   toggleStat(showStat: boolean) {
     this.showStat = showStat
   }
+
 }
