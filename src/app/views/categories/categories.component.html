@@ -25,9 +25,11 @@
         <mat-label>Поиск категории</mat-label>
         <input
           #inputSearchCategory
+
           (keydown.escape)="searchCategoryTitle=''; search()"
           (keyup)="search()"
           [(ngModel)]="searchCategoryTitle"
+
           matInput
         >
 
@@ -77,7 +79,7 @@
         <span class="category__icon">
            <button mat-icon-button class="icon-edit">
               <mat-icon
-                *ngIf="indexMouseMove===index"
+                *ngIf="indexMouseMove===index || isMobile || isTablet"
                 (click)="$event.stopPropagation(); openEditCategoryDialog(mapValue.key)"
               >edit</mat-icon>
             </button>
