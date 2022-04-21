@@ -67,7 +67,7 @@
       </button>
     </mat-form-field>
   </div>
-  <div class="col-md-3 col-sm-12">
+  <div class="col-md-3 col-sm-12 mb-4">
     <button class="btn__filter"
             mat-raised-button
             *ngIf="selectedStatusFilter !== null || (searchTaskText !== null)"
@@ -83,7 +83,7 @@
 
   </div>
   <div class="col-md-12">
-    <div class="card">
+    <div class="card" *ngIf="!isMobile">
       <div class="card-body px-0 pb-2" *ngIf="tasks && tasks.length > 0; else notTask">
         <div class="table-responsive">
 
@@ -188,5 +188,101 @@
       </ng-template>
 
     </div>
+
+    <!--    показ задач для мобильных устройств-->
+    <div *ngIf="isMobile && tasks.length >0">
+      <div *ngFor="let task of tasks; let index = index"
+           [ngClass]="{'completed': task.completed}">
+
+        <div class="card">
+          <div [ngClass]="{'background-completed': task.completed}"
+               [style.background-color]="getPriorityColor(task)"
+               class="card-mobile__priority--top">
+
+          </div>
+          <div (click)="$event.stopPropagation(); openEditTaskDialog(task)"
+               [ngClass]="{'background-completed': task.completed}"
+               class="card-mobile">
+
+            <div class="card-mobile__title">
+
+              <div class="card-mobile__title--inner">
+
+                <div
+                  [class.completed]="task.completed"
+                  class="card-mobile__title"
+                >
+                  {{task.title}}
+                </div>
+
+              </div>
+
+              <button
+                class="nowidth"
+                (click)="$event.stopPropagation(); onToggleStatus(task)"
+                *ngIf="!task.completed"
+                mat-icon-button
+              >
+                <mat-icon
+                  (click)="$event.stopPropagation(); onToggleStatus(task)"
+                >
+                  check_circle_outline
+                </mat-icon>
+              </button>
+
+              <button
+                class="nowidth"
+                (click)="$event.stopPropagation(); onToggleStatus(task)"
+                *ngIf="task.completed"
+                mat-icon-button
+              >
+                <mat-icon class="check-icon-completed">check_circle</mat-icon>
+              </button>
+
+            </div>
+
+            <div class="card-mobile__info">
+
+              <div
+                [ngClass]="{'completed': task.completed}"
+                class="card-mobile__category"
+              >
+                <span
+                  [ngClass]="{'card-mobile__category--btn': !task.completed && task.category}"
+                >
+                  {{task.category ? task.category.title : 'Без категории'}}
+                </span>
+              </div>
+
+              <div *ngIf="task.priority" class="card-mobile__priority">
+                <span
+                  [ngClass]="{'card-mobile__priority--btn': !task.completed, 'completed': task.completed}"
+                  [style.background-color]="getMobilePriorityBgColor(task)"
+                >
+                  {{task.priority.title}}
+                </span>
+              </div>
+
+
+              <div
+                [ngClass]="{'completed': task.completed}"
+                class="card-mobile__date"
+              >
+                {{task.date | taskDate}}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="isMobile && tasks.length == 0">
+      <p class="task__not-found">Ничего не найдено</p>
+    </div>
+
   </div>
 </div>
