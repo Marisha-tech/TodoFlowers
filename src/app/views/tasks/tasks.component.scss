@@ -1,6 +1,11 @@
 .completed {
   text-decoration: line-through;
   color: #ccc;
+  background-color: transparent !important;
+}
+
+.background-completed {
+  background-color: #94ada7 !important
 }
 
 .task {
@@ -25,12 +30,84 @@
 
 }
 
+.card {
+  border-radius: 0;
+
+  &-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 2% 5% 5%;
+    //  margin: 5% 0;
+    //
+    &__priority {
+
+      &--top {
+        height: 15px;
+      }
+
+      &--btn {
+        border-radius: 0;
+        margin-bottom: 0;
+        padding: 10px;
+        color: #fff;
+        @media (max-width: 320px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__category {
+      &--btn {
+        background: #8e8e8e;
+        border-radius: 0;
+        margin-bottom: 0;
+        padding: 10px;
+        color: #fff;
+        @media (max-width: 320px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 5%;
+    }
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__date {
+      @media (max-width: 320px) {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .card {
+    margin: 5% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn__filter {
+    margin-bottom: 5%;
+  }
+}
+
+
 .example-form-field {
   //background-color: rgba(57, 57, 64, .5);
   border-radius: 4px;
   color: #000;
 }
-
 
 
 .col {
