@@ -375,10 +375,11 @@ https://slides.com/gruizdevilla/memory - Поиск и отладка утече
 <p>Главная задача - избежать memory leak - объекты не удаляются из памяти инструментов Garbage Collector, а накапливаются и "забивают" память</p>
 <p>GC удаляет те объекты, на которые никто не ссылается</p>
 <p>Distance - расстояние от GC root до объекта</p>
+  
 ![Heap snapshots distance](https://user-images.githubusercontent.com/51979512/164588616-9cc3d313-a003-475e-b642-ed74ec9bacdd.jpg)
-
 <p>Подробно по значениям сети</p>
 ![memory leak](https://user-images.githubusercontent.com/51979512/164588425-da5d0410-4b6e-4235-ae73-70f7188e7ee5.jpg)
+
 <p></p>
 <p></p>
 <p></p>
