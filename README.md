@@ -416,6 +416,27 @@ https://angular.io/guide/aot-compiler
 <p>В  зависимости от режима - в коде можно добавлять различные условия (получать реальные данные, вместо тестовых, создавать различные значения переменных и пр.)</p>
 <p>Готовая функция <code>isDevMode()</code> - прописывать в компоненте</p>
 <p>Для нашего проекта неважно, т.к. это не используем</p>
+
+## Установка на хостинг
+https://angular.io/guide/deployment
+
+<ol>
+<li><b>Любой PHP хостинг - платно</b>
+<ol>
+<li>Копировать содержимое папки dist</li>
+<li>Все ошибочные запросы перенаправлять на страницу index.html</li>
+</ol>
+<p>Для того, чтобы можно было добавить папку с проектом (dist) в подпапку на хостинг нужно в index.html <code>base href="./"</code></p>
+</li>
+<li>
+<b>GitHub pages - бесплатно</b>
+https://pages.github.com/
+<ol>
+<li><code>ng build --prod --output-path docs --base-href /project_name/</code></li>
+
+</ol>
+</li>
+</ol>
 <p></p>
 <p></p>
 <p></p>
