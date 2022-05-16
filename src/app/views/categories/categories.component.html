@@ -21,15 +21,13 @@
 
     <div>
       <!--   поиск категории-->
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field>
         <mat-label>Поиск категории</mat-label>
         <input
           #inputSearchCategory
-
           (keydown.escape)="searchCategoryTitle=''; search()"
           (keyup)="search()"
           [(ngModel)]="searchCategoryTitle"
-
           matInput
         >
 
@@ -54,7 +52,6 @@
         <span class="category__uncompleted--count">{{uncompletedTotal}}</span>
       </a>
     </li>
-
 
     <!--разделитель-->
     <hr class="horizontal light">
