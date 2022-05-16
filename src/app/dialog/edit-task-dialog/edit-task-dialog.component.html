@@ -56,16 +56,18 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <!--иконка календаря (для открытия календаря)-->
     <mat-datepicker #picker></mat-datepicker> <!--компонент календаря (открывается оп нажатию)-->
+
+    <!--кнопка очистки календаря-->
+    <button
+      *ngIf="inputDate.value.trim().length > 0"
+      (click)="tmpDate = null"
+      mat-button matSuffix mat-icon-button aria-label="Clear"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
   </mat-form-field>
 
-  <!--кнопка очистки календаря-->
-  <button
-    *ngIf="inputDate.value.trim().length > 0"
-    (click)="tmpDate = null"
-    mat-button matSuffix mat-icon-button aria-label="Clear"
-  >
-    <mat-icon>clear</mat-icon>
-  </button>
+
 
 </div>
 
