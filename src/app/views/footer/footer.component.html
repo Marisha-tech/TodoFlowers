@@ -8,7 +8,7 @@
             document.write(new Date().getFullYear())
           </script>
           {{year | date: 'yyyy'}}
-          made with <i class="fa fa-heart" aria-hidden="true"></i>
+         <!-- made with <i class="fa fa-heart" aria-hidden="true"></i>-->
           <a href="" class="font-weight-bold" target="_blank">{{siteName}}</a>
           Тестовые данные обнуляются при обновлении страницы
         </div>
@@ -19,7 +19,7 @@
             <a [href]="site" class="nav-link text-muted" target="_blank">Сайт</a>
           </li>
           <li class="nav-item">
-            <a (click)="openAboutDialog()" class="nav-link text-muted" target="_blank">О приложении</a>
+            <a (click)="openAboutDialog()" class="nav-link text-muted pointer" target="_blank">О приложении</a>
           </li>
           <li class="nav-item">
             <a [href]="blog" class="nav-link text-muted" target="_blank">Блог</a>

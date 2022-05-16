@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
   site: 'https://lflower.ru/';
   blog: 'https://lflower.ru/';
   year: Date;
-  siteName = 'botanicalBlog'
+  siteName = 'botanical-flower'
 
   constructor(public dialog: MatDialog) {
   }
