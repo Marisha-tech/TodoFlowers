@@ -90,6 +90,14 @@
   }
 }
 
+.btn__filter {
+  margin-left: 5%;
+}
+
+.btn__add {
+  margin-bottom: 5%;
+}
+
 @media (max-width: 425px) {
   .card {
     margin: 5% 0;
@@ -98,7 +106,7 @@
 
 @media (max-width: 768px) {
   .btn__filter {
-    margin-bottom: 5%;
+    margin-left: 0;
   }
 }
 

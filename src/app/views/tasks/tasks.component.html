@@ -68,17 +68,19 @@
     </mat-form-field>
   </div>
   <div class="col-md-3 col-sm-12 mb-4">
-    <button class="btn__filter"
-            mat-raised-button
-            *ngIf="selectedStatusFilter !== null || (searchTaskText !== null)"
-            (click)="$event.stopPropagation(); onFilterByStatus(null); searchTaskText = ''; onFilterByTitle(); onFilterByPriority(null)"
-    >Сбросить фильтр
-    </button>
+
     <button
+      class="btn__add"
       mat-raised-button
       color="primary"
       (click)="openAddTaskDialog()"
     >Добавить
+    </button>
+    <button class="btn__filter"
+            mat-raised-button
+            *ngIf="selectedStatusFilter != null || searchTaskText != null || selectedPriorityFilter != null"
+            (click)="$event.stopPropagation(); onFilterByStatus(null); searchTaskText = ''; onFilterByTitle(); onFilterByPriority(null)"
+    >Сбросить фильтр
     </button>
 
   </div>
