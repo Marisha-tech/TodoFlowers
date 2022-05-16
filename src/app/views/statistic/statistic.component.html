@@ -17,7 +17,7 @@
       iconName="thumb_down_alt"
       [count1]="uncompleteTasksInCategory"
       [countTotal]="totalTasksInCategory"
-      [completed]="true"
+      [completed]="false"
     >
     </app-statistic-card>
 
@@ -35,7 +35,7 @@
       title="Процент незавершенных задач"
       iconName="thumb_down_alt"
       [count1]="uncompleteTasksInCategory ? (uncompleteTasksInCategory/totalTasksInCategory | percent) : '0%'"
-      [completed]="true"
+      [completed]="false"
     >
     </app-statistic-card>
 

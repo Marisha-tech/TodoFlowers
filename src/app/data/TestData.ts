@@ -5,16 +5,26 @@ import {Task} from '../model/Task';
 
 export class TestData {
   static categories: Category[] = [
-    {id: 1, title: 'Работа'},
-    {id: 2, title: 'Семья'},
-    {id: 3, title: 'Учеба'},
-    {id: 4, title: 'Отдых'},
-    {id: 5, title: 'Спорт'},
-    {id: 6, title: 'Еда'},
-    {id: 7, title: 'Финансы'},
-    {id: 8, title: 'Гаджеты'},
-    {id: 9, title: 'Здоровье'},
-    {id: 10, title: 'Автомобиль'},
+    // {id: 1, title: 'Работа'},
+    // {id: 2, title: 'Семья'},
+    // {id: 3, title: 'Учеба'},
+    // {id: 4, title: 'Отдых'},
+    // {id: 5, title: 'Спорт'},
+    // {id: 6, title: 'Еда'},
+    // {id: 7, title: 'Финансы'},
+    // {id: 8, title: 'Гаджеты'},
+    // {id: 9, title: 'Здоровье'},
+    // {id: 10, title: 'Автомобиль'},
+    {id: 1, title: 'Все растения'},
+    {id: 2, title: 'Алоэ'},
+    {id: 3, title: 'Земляника'},
+    {id: 4, title: 'Редис'},
+    {id: 5, title: 'Огурец'},
+    {id: 6, title: 'Орхидея'},
+    {id: 7, title: 'Перец'},
+    {id: 8, title: 'Рассада'},
+    {id: 9, title: 'Томат'},
+    {id: 10, title: 'Баклажан'},
   ]
 
   static priorities: Priority[] = [
@@ -27,7 +37,7 @@ export class TestData {
   static tasks: Task[] = [
     {
       id: 1,
-      title: 'Залить бензин полный бак',
+      title: 'Полить',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[9],
@@ -36,7 +46,7 @@ export class TestData {
 
     {
       id: 2,
-      title: 'Передать отчеты начальнику управления',
+      title: 'Подкормить',
       priority: TestData.priorities[0],
       completed: false,
       category: TestData.categories[0],
@@ -45,7 +55,7 @@ export class TestData {
 
     {
       id: 3,
-      title: 'Убраться у себя в комнате, полить растения',
+      title: 'Опрыскать',
       priority: TestData.priorities[2],
       completed: true,
       category: TestData.categories[1]
@@ -53,7 +63,7 @@ export class TestData {
 
     {
       id: 4,
-      title: 'Сходить в парк с семьей, пригласить друзей',
+      title: 'Посадить',
       priority: TestData.priorities[1],
       completed: false,
       category: TestData.categories[1],
@@ -62,14 +72,14 @@ export class TestData {
 
     {
       id: 5,
-      title: 'Найти и выучить учебник по квантовой физике',
+      title: 'Пикировать',
       completed: false,
       category: TestData.categories[2]
     },
 
     {
       id: 6,
-      title: 'Сходить на семинар по программированию',
+      title: 'Посеять',
       priority: TestData.priorities[1],
       completed: true,
       category: TestData.categories[2],
@@ -78,7 +88,7 @@ export class TestData {
 
     {
       id: 7,
-      title: 'Найти билеты в Турцию, выбрать отель',
+      title: 'Обрезать',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[3]
@@ -86,14 +96,14 @@ export class TestData {
 
     {
       id: 8,
-      title: 'Приготовить ужин для всей семьи (семга с картошкой)',
+      title: 'Размножить',
       completed: false,
       category: TestData.categories[5]
     },
 
     {
       id: 9,
-      title: 'Подтянуться 10 раз',
+      title: 'Делить',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[4],
@@ -102,7 +112,7 @@ export class TestData {
 
     {
       id: 10,
-      title: 'Пробежать 100 м',
+      title: 'Замачивать',
       priority: TestData.priorities[0],
       completed: true,
       category: TestData.categories[4]
@@ -110,13 +120,13 @@ export class TestData {
 
     {
       id: 11,
-      title: 'Организовать детский праздник ',
+      title: 'Полить',
       completed: false
     },
 
     {
       id: 12,
-      title: 'Сходить на лекцию "Как научиться программировать на Java"',
+      title: 'Обработать',
       priority: TestData.priorities[1],
       completed: false,
       category: TestData.categories[2]
@@ -124,7 +134,7 @@ export class TestData {
 
     {
       id: 13,
-      title: 'Купить продукты на неделю',
+      title: 'Подкормить',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[5],
@@ -133,21 +143,21 @@ export class TestData {
 
     {
       id: 14,
-      title: 'Провести собрание по поводу всех проектов',
+      title: 'Опрыскать',
       completed: true,
       category: TestData.categories[0]
     },
 
     {
       id: 15,
-      title: 'Сдать экзамен по Java',
+      title: 'Опрыскать',
       priority: TestData.priorities[2],
       completed: true
     },
 
     {
       id: 16,
-      title: 'Положить 100 000 р в банк на депозит',
+      title: 'Посеять',
       priority: TestData.priorities[3],
       completed: false,
       category: TestData.categories[6]
@@ -155,7 +165,7 @@ export class TestData {
 
     {
       id: 17,
-      title: 'Попросить аванс на работе',
+      title: 'Размножить',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[6]
@@ -163,7 +173,7 @@ export class TestData {
 
     {
       id: 18,
-      title: 'Сдать анализы, проверить гемоглобин',
+      title: 'Обработка (от болезней/ вредителей)',
       priority: TestData.priorities[3],
       completed: false,
       category: TestData.categories[8],
@@ -173,7 +183,7 @@ export class TestData {
 
     {
       id: 19,
-      title: 'Сравнить новый айпад с самсунгом',
+      title: 'Полить',
       priority: TestData.priorities[0],
       completed: false,
       category: TestData.categories[7],
@@ -183,10 +193,28 @@ export class TestData {
 
     {
       id: 20,
-      title: 'Футбол с сотрудниками',
+      title: 'Пересадить',
       priority: TestData.priorities[0],
       completed: false,
       category: TestData.categories[4],
+      date: new Date('2022-03-17')
+
+    },
+    {
+      id: 21,
+      title: 'Полить',
+      priority: TestData.priorities[0],
+      completed: false,
+      category: TestData.categories[4],
+      date: new Date('2022-03-17')
+
+    },
+    {
+      id: 22,
+      title: 'Подкормить',
+      priority: TestData.priorities[1],
+      completed: false,
+      category: TestData.categories[2],
       date: new Date('2022-03-17')
 
     }
